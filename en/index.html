@@ -59,18 +59,18 @@
   <main>
     <section class="hero section">
       <div class="hero__content">
-        <p class="eyebrow">Project Prime</p>
-        <h1>Your everyday nutrition, training and progress. Clear. Fast. Precise.</h1>
-        <p class="hero__text">
+        <p class="eyebrow reveal">Project Prime</p>
+        <h1 class="reveal" style="animation-delay:.05s">Your everyday <span class="accent-text">nutrition, training</span> and progress. Clear. Fast. Precise.</h1>
+        <p class="hero__text reveal" style="animation-delay:.1s">
           Project Prime combines AI recognition, barcode scanning, saved recipes,
           training planning, supplements and progress data in one app that feels
           like real usage, not spreadsheet work.
         </p>
-        <div class="hero__actions" id="download">
+        <div class="hero__actions reveal" id="download" style="animation-delay:.15s">
           <a class="button button--primary" href="https://apps.apple.com/de/search?term=Project%20Prime" aria-label="Search for Project Prime on the App Store">App Store</a>
           <a class="button button--ghost" href="https://play.google.com/store/apps/details?id=de.dennisvollmer.projectprime" aria-label="Open Project Prime on Google Play">Google Play</a>
         </div>
-        <div class="trust-row" aria-label="Project Prime benefits">
+        <div class="trust-row reveal" aria-label="Project Prime benefits" style="animation-delay:.2s">
           <span>AI photos</span>
           <span>Barcode</span>
           <span>Recipes</span>
@@ -79,45 +79,80 @@
       </div>
 
       <div class="phone-stage" aria-hidden="true">
+        <div class="phone-glow"></div>
         <div class="phone">
           <div class="phone__status"></div>
-          <div class="app-card app-card--hero">
-            <div class="avatar"></div>
-            <div>
-              <span class="mini-title">Project Prime</span>
-              <strong>Hi Dennis</strong>
-              <p>Stay focused.</p>
+          <div class="app-screen">
+            <div class="app-topbar">
+              <img src="../assets/project-prime-logo.png" alt="" class="app-avatar">
+              <div class="app-greeting">
+                <strong>Good afternoon, Dennis</strong>
+                <span class="premium-pill">Premium</span>
+              </div>
+              <span class="icon-dot">?</span>
+              <span class="icon-dot icon-dot--accent"></span>
             </div>
-            <img src="../assets/project-prime-logo.png" alt="" class="phone-logo">
-          </div>
-          <div class="app-card weight-card">
-            <div class="card-title">
-              <span class="icon-pill">↗</span>
-              <strong>Weight history</strong>
+            <p class="app-streak">🔥 13-day streak – keep it up!</p>
+
+            <div class="app-card activity-card">
+              <div class="card-title">
+                <span class="icon-pill">↻</span>
+                <strong>Activity</strong>
+              </div>
+              <div class="rings-wrap">
+                <div class="rings">
+                  <div class="ring ring--lime"></div>
+                  <div class="ring ring--blue"></div>
+                  <div class="ring ring--cyan"></div>
+                  <div class="ring-center">
+                    <strong>2495</strong>
+                    <span>kcal</span>
+                  </div>
+                </div>
+                <div class="rings-legend">
+                  <div><span class="dot dot--lime"></span>Calories<b>2,495 / 2,725</b></div>
+                  <div><span class="dot dot--blue"></span>Steps<b>7,888 / 10,000</b></div>
+                  <div><span class="dot dot--cyan"></span>Water<b>2.8 / 3.5 L</b></div>
+                </div>
+              </div>
+              <div class="mini-stat-row">
+                <div><strong>13</strong><span>Streak</span></div>
+                <div><strong>-4.0kg</strong><span>To goal</span></div>
+                <div><strong>0/6</strong><span>Supplements</span></div>
+              </div>
             </div>
-            <div class="stats-row">
-              <div><span>Start</span><strong>94.0 kg</strong></div>
-              <div><span>Current</span><strong>91.0 kg</strong></div>
-              <div><span>Goal</span><strong>89.0 kg</strong></div>
+
+            <div class="app-card training-mini-card">
+              <div class="card-title">
+                <span class="icon-pill">✦</span>
+                <strong>Training</strong>
+                <span class="training-mini-sub">Chest · Yesterday</span>
+              </div>
+              <div class="training-mini-stats">
+                <div><b>175</b><span>Kcal</span></div>
+                <div><b>65</b><span>Min</span></div>
+                <div><b>3/5</b><span>Energy</span></div>
+                <div><b>3/5</b><span>Pump</span></div>
+              </div>
             </div>
-            <div class="chart">
-              <span class="chart-line"></span>
-              <span class="chart-fill"></span>
+
+            <div class="week-row" aria-label="Weekly progress">
+              <span class="week-day is-done">Mo</span>
+              <span class="week-day is-done">Tu</span>
+              <span class="week-day is-done">We</span>
+              <span class="week-day is-done">Th</span>
+              <span class="week-day is-done">Fr</span>
+              <span class="week-day is-today">Sa</span>
+              <span class="week-day">Su</span>
             </div>
-            <button class="mock-button">+ Log current weight</button>
-          </div>
-          <div class="quick-grid">
-            <div class="mini-card">
-              <span class="drop">●</span>
-              <strong>Water</strong>
-              <b>1.5 L</b>
-              <small>/ 3.0 L</small>
-            </div>
-            <div class="mini-card mini-card--orange">
-              <span class="drop">●</span>
-              <strong>Calories</strong>
-              <b>1,840</b>
-              <small>/ 2,450 kcal</small>
+
+            <div class="phone-nav">
+              <div class="phone-nav__item is-active"><span class="phone-nav__icon">⌂</span>Diary</div>
+              <div class="phone-nav__item"><span class="phone-nav__icon">◆</span>Nutrition</div>
+              <div class="phone-nav__item"><span class="phone-nav__icon">✦</span>Training</div>
+              <div class="phone-nav__item"><span class="phone-nav__icon">▥</span>Stats</div>
+              <div class="phone-nav__item"><span class="phone-nav__icon">▧</span>Recipes</div>
+              <div class="phone-nav__item"><span class="phone-nav__icon">◍</span>Profile</div>
             </div>
           </div>
         </div>
