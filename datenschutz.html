@@ -255,7 +255,7 @@
 
 <main>
   <section class="hero">
-    <p class="meta">Version 1.5 - Stand: 26.07.2026</p>
+    <p class="meta">Version 1.6 - Stand: 01.08.2026</p>
     <h1>Datenschutzerklärung für Project Prime</h1>
     <p>
       Diese Datenschutzerklärung beschreibt, wie personenbezogene Daten bei der Nutzung der mobilen App
@@ -481,6 +481,18 @@
         geöffnet wurde,</li>
       <li>lokal gespeicherte App-Zustände, Einstellungen und Sitzungsinformationen.</li>
     </ul>
+
+    <h3>5.13 Level- und Abzeichendaten</h3>
+    <p>
+      Project Prime berechnet aus bereits erfassten Aktivitäten (zum Beispiel Mahlzeiten, Training, Gewicht,
+      Schritte, Wasser und Supplemente) einen internen Erfahrungspunkte-Stand (XP) sowie ein daraus abgeleitetes
+      Level. Nutzer können ein freigeschaltetes Abzeichen auswählen, das an ihrem Profilbild angezeigt wird.
+    </p>
+    <p>
+      Dabei werden keine zusätzlichen personenbezogenen Daten erhoben, die nicht bereits an anderer Stelle dieser
+      Erklärung genannt sind. XP-Stand, Level und ausgewähltes Abzeichen werden wie die übrigen App-Daten über
+      das Supabase-Backend gespeichert.
+    </p>
   </section>
 
   <section class="card">
@@ -500,6 +512,7 @@
       <li>Speicherung persönlicher Rezepte und Speisen zur späteren Wiederverwendung,</li>
       <li>Moderation und Freigabe von Community-Rezepten,</li>
       <li>Supplement-Vorschläge und Supplement-Tracking,</li>
+      <li>Berechnung von Erfahrungspunkten (XP) und Level sowie Anzeige eines ausgewählten Abzeichens,</li>
       <li>Coach-Auswertung und Betreuung, soweit ein Coaching-Zusammenhang besteht,</li>
       <li>Bereitstellung von Premium-Funktionen und Verwaltung von Nutzungsgrenzen,</li>
       <li>interne Analyse, aus welchem App-Bereich ein Premium-Hinweis geöffnet wurde, um Funktionen und Angebote zu
@@ -1302,6 +1315,12 @@
           <td>Supabase</td>
         </tr>
         <tr>
+          <td>Level/Abzeichen</td>
+          <td>XP-Stand, Level, ausgewähltes Abzeichen</td>
+          <td>Motivation und Fortschrittsanzeige</td>
+          <td>Supabase</td>
+        </tr>
+        <tr>
           <td>Health-Daten</td>
           <td>Schritte und Aktivitätsdaten</td>
           <td>Automatische Tagesaktualisierung</td>
@@ -1337,7 +1356,7 @@
 </main>
 
 <footer>
-  Project Prime - Datenschutz - Stand 26.07.2026
+  Project Prime - Datenschutz - Stand 01.08.2026
 </footer>
 </body>
 </html>
