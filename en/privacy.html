@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>
+  (function () {
+    try {
+      var MAP = {
+        "index.html": "index.html",
+        "datenschutz.html": "privacy.html",
+        "nutzungsbedingungen.html": "terms.html",
+        "impressum.html": "imprint.html",
+        "konto-loeschen.html": "delete-account.html",
+        "support.html": "support.html"
+      };
+      var REV = {};
+      for (var k in MAP) { REV[MAP[k]] = k; }
+      var path = location.pathname;
+      var inEn = path.indexOf("/en/") !== -1;
+      var file = path.split("/").pop() || "index.html";
+      var chosen = null;
+      try { chosen = localStorage.getItem("pp_lang"); } catch (e) {}
+      var wantEn = chosen ? chosen === "en" : (navigator.language || "de").toLowerCase().indexOf("de") !== 0;
+      if (wantEn && !inEn) {
+        location.replace("en/" + (MAP[file] || "index.html") + location.search + location.hash);
+      } else if (!wantEn && inEn) {
+        location.replace("../" + (REV[file] || "index.html") + location.search + location.hash);
+      }
+    } catch (e) {}
+  })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | Project Prime</title>
+  <link rel="alternate" hreflang="de" href="https://REPLACE-WITH-YOUR-DOMAIN/datenschutz.html">
+  <link rel="alternate" hreflang="en" href="https://REPLACE-WITH-YOUR-DOMAIN/en/privacy.html">
+  <link rel="alternate" hreflang="x-default" href="https://REPLACE-WITH-YOUR-DOMAIN/datenschutz.html">
+  <style>
+    :root {
+      --bg: #060607;
+      --card: #101114;
+      --card-soft: #16171b;
+      --text: #f5f6f7;
+      --muted: #9ca3af;
+      --accent: #c6ff3d;
+      --accent-ink: #0a0a0b;
+      --border: rgba(198, 255, 61, .2);
+      --danger: #ff4d5e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 8% 0%, rgba(198, 255, 61, .09), transparent 30%),
+        radial-gradient(circle at 90% 8%, rgba(198, 255, 61, .04), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.72;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(5, 5, 6, .92);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      z-index: 2;
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .brand {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--accent);
+    }
+
+    nav a {
+      color: var(--muted);
+      margin-left: 18px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 46px 24px 84px;
+    }
+
+    .hero,
+    .card {
+      background: rgba(16, 17, 20, .88);
+      border: 1px solid rgba(255, 255, 255, .07);
+      border-radius: 22px;
+      padding: 30px;
+      margin-bottom: 22px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, .35);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(198, 255, 61, .13), rgba(255, 255, 255, .025) 45%, rgba(255, 255, 255, .01));
+      border-color: var(--border);
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(34px, 5vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -.03em;
+    }
+
+    h2 {
+      color: var(--accent);
+      margin: 0 0 10px;
+      font-size: 26px;
+    }
+
+    h3 {
+      margin: 18px 0 8px;
+      color: var(--text);
+      font-size: 20px;
+    }
+
+    p,
+    li,
+    td,
+    th {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+      padding-left: 24px;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .notice {
+      border: 1px solid var(--border);
+      background: rgba(198, 255, 61, .1);
+      border-radius: 16px;
+      padding: 16px 18px;
+      margin-top: 18px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 4px;
+      overflow: hidden;
+      border-radius: 14px;
+    }
+
+    th,
+    td {
+      border: 1px solid rgba(255, 255, 255, .08);
+      padding: 12px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: rgba(198, 255, 61, .08);
+      color: var(--text);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        display: block;
+      }
+
+      nav {
+        margin-top: 12px;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 0 12px 8px 0;
+      }
+
+      .hero,
+      .card {
+        padding: 22px;
+      }
+
+      table,
+      thead,
+      tbody,
+      th,
+      td,
+      tr {
+        display: block;
+      }
+
+      th {
+        display: none;
+      }
+
+      td {
+        border-top: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="brand">Project Prime</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="support.html">Support</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="imprint.html">Legal Notice</a>
+      <a href="../datenschutz.html" onclick="try{localStorage.setItem('pp_lang','de')}catch(e){}">DE</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <p class="meta">Version 1.5 - As of: 26.07.2026</p>
+    <h1>Privacy Policy for Project Prime</h1>
+    <p>
+      This privacy policy describes how personal data is processed when using the mobile app
+      Project Prime, the coach area, and the nutrition, training, recipe, supplement and premium
+      features.
+    </p>
+    <p>
+      It applies to the Project Prime app, the associated backend services, the public website and
+      all features directly connected to the app.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>1. Controller</h2>
+    <p>
+      The controller within the meaning of the General Data Protection Regulation (GDPR) is:
+    </p>
+    <p>
+      Dennis Vollmer<br>
+      Wiehenstraße 28<br>
+      32289 Rödinghausen<br>
+      Germany<br>
+      Email: <a href="mailto:pt@dennis-vollmer.de">pt@dennis-vollmer.de</a>
+    </p>
+    <p>
+      Wherever this privacy policy refers to "we", "us", "Project Prime" or "the app", this refers
+      to the controller named above.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>2. Scope</h2>
+    <p>
+      Project Prime is a coaching and tracking app for nutrition, training, body data, progress
+      tracking, recipe management, supplement planning and optional premium features.
+    </p>
+    <p>
+      The app is aimed at users who want to document and evaluate their nutrition, training and
+      progress data. Depending on usage, data may also be shown to a coach if a corresponding
+      coach access or coach assignment exists.
+    </p>
+    <p>
+      This privacy policy applies to:
+    </p>
+    <ul>
+      <li>the mobile Project Prime app for iOS and Android,</li>
+      <li>registration, login and account management,</li>
+      <li>the Supabase backend and the app data stored there,</li>
+      <li>the coach and admin area, where used,</li>
+      <li>food, barcode, photo, recipe and AI features,</li>
+      <li>supplement features and daily overviews,</li>
+      <li>premium, subscription and in-app purchase features, where offered,</li>
+      <li>the public website with legal notice, privacy policy, terms of use and support.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>3. Brief overview</h2>
+    <p>
+      Project Prime processes in particular account, profile, body, nutrition, training, activity,
+      recipe, supplement, payment status and technical usage data.
+    </p>
+    <p>
+      Some of this data may constitute health data within the meaning of Art. 9 GDPR or allow
+      conclusions to be drawn about health, fitness, weight development, nutrition, training
+      behavior and lifestyle.
+    </p>
+    <p>
+      Photos are only processed if users actively use a corresponding feature, for example for
+      loose food items, dishes, meals, barcodes, packaging or nutrition tables.
+    </p>
+    <p>
+      Project Prime prioritizes its own database entries. External queries and AI analyses are
+      only meant to take place when required for the respective feature.
+    </p>
+    <p>
+      Users can delete their account. In doing so, personal data is deleted unless legal retention
+      obligations or legitimate reasons prevent this. General, non-personal food or recipe data may
+      be retained if it is needed for the app's functionality and no longer contains any direct
+      personal reference.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>4. Definitions</h2>
+    <p>
+      Personal data is any information relating to an identified or identifiable natural person.
+    </p>
+    <p>
+      Health data is personal data relating to physical or mental health that can reveal
+      information about a person's state of health.
+    </p>
+    <p>
+      Processing includes any handling of personal data, for example collecting, storing,
+      displaying, calculating, evaluating, transmitting, deleting or providing.
+    </p>
+    <p>
+      Coach means an authorized person who, within the app or a coaching relationship, can gain
+      insight into shared or assigned user information.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>5. What data does Project Prime process?</h2>
+
+    <h3>5.1 Account and access data</h3>
+    <ul>
+      <li>email address,</li>
+      <li>password in a technically protected form,</li>
+      <li>login status and session data,</li>
+      <li>times of registration and login,</li>
+      <li>technical authentication information,</li>
+      <li>role information, for example user, coach or admin, where applicable.</li>
+    </ul>
+
+    <h3>5.2 Profile and coaching data</h3>
+    <ul>
+      <li>name or display name,</li>
+      <li>profile picture, if voluntarily provided,</li>
+      <li>coaching goal, for example losing weight, losing fat, building muscle, maintaining weight or gaining weight,</li>
+      <li>coach assignment, if a coaching context exists,</li>
+      <li>premium status or manually granted access, where required.</li>
+    </ul>
+
+    <h3>5.3 Body and goal data</h3>
+    <ul>
+      <li>current weight, starting weight and target weight,</li>
+      <li>weight history with date,</li>
+      <li>height, age and gender,</li>
+      <li>metabolic adjustment in kilocalories, if entered,</li>
+      <li>automatically calculated daily targets for calories, protein, carbohydrates, fat, water and steps.</li>
+    </ul>
+
+    <h3>5.4 Nutrition data</h3>
+    <ul>
+      <li>entered food, beverages and meals,</li>
+      <li>meal category, for example breakfast, lunch, dinner or snack,</li>
+      <li>grams, portions, pieces, bars, slices or other units, where available,</li>
+      <li>calories, protein, fat, carbohydrates and other nutritional information,</li>
+      <li>manually entered activity calories,</li>
+      <li>daily notes in the diary,</li>
+      <li>entries taken over from saved recipes or saved dishes.</li>
+    </ul>
+
+    <h3>5.5 Beverages</h3>
+    <p>
+      Beverages may be processed like food if they are relevant for nutrition tracking, for
+      example cola, juice, dairy drinks, smoothies or alcoholic beverages. Name, quantity,
+      calories, macronutrients and, where applicable, barcode or product information may be
+      recorded.
+    </p>
+
+    <h3>5.6 Training and activity data</h3>
+    <ul>
+      <li>training days and training notes,</li>
+      <li>training plans, training units and exercises,</li>
+      <li>sets, repetitions, weights and exercise performance,</li>
+      <li>cardio training types, duration, intensity and calories burned, if entered,</li>
+      <li>training duration via start/stop function,</li>
+      <li>subjective information such as difficulty, energy, pump feeling, pain and comments,</li>
+      <li>exercise progress and charts per exercise,</li>
+      <li>evaluation of minutes and units trained over the last seven days.</li>
+    </ul>
+
+    <h3>5.7 Photo, camera and image data</h3>
+    <ul>
+      <li>photos of loose food items, dishes, meals, packaging and nutrition tables,</li>
+      <li>barcode and product images if a product is not found,</li>
+      <li>information derived from photos, such as recognized food items, product names, brands, barcode/EAN, nutritional values and portions,</li>
+      <li>user notes on photos, for example "the meat is venison" or "name: chili con carne".</li>
+    </ul>
+    <p>
+      Photos are generally only processed for analysis triggered by the user. Users should not
+      upload photos that show uninvolved third parties, private documents, addresses or other
+      unnecessary personal information.
+    </p>
+
+    <h3>5.8 Recipe, dish and community data</h3>
+    <ul>
+      <li>own saved recipes and dishes,</li>
+      <li>name, ingredients, quantities, units, portions and calculated nutritional values,</li>
+      <li>preparation instructions, if a recipe is to be made available to the community,</li>
+      <li>moderation status, AI review note, approval or rejection status,</li>
+      <li>public display of approved recipe ideas within the app.</li>
+    </ul>
+
+    <h3>5.9 Supplement data</h3>
+    <ul>
+      <li>voluntary information on diet and supplement goals,</li>
+      <li>answers to questions about the supplement suggestion,</li>
+      <li>additional notes voluntarily entered by users,</li>
+      <li>selected or manually added supplements,</li>
+      <li>daily check-off or intake status, where used.</li>
+    </ul>
+
+    <h3>5.10 Health and activity data from the device</h3>
+    <p>
+      As far as users actively connect the feature, Project Prime can retrieve step counts or
+      comparable activity data from Health Connect on Android or Apple Health/HealthKit on iOS.
+      The connection is only established after explicit authorization within the operating
+      system. Users can revoke this authorization at any time in their device settings.
+    </p>
+
+    <h3>5.11 Premium, subscription and payment status</h3>
+    <ul>
+      <li>selected plan, for example monthly or yearly,</li>
+      <li>premium status and term information,</li>
+      <li>store information from Apple or Google, where required for activation,</li>
+      <li>information on whether an account was manually activated as premium.</li>
+    </ul>
+    <p>
+      Payment data such as complete credit card information is not processed by Project Prime
+      itself, but through the respective app store providers, as far as in-app purchases or
+      subscriptions are offered.
+    </p>
+
+    <h3>5.12 Technical data</h3>
+    <ul>
+      <li>device and app information, where technically required,</li>
+      <li>app version, build number and platform,</li>
+      <li>update status and force-update configuration,</li>
+      <li>IP address and connection data when communicating with backend, AI and database services,</li>
+      <li>error and usage events that occur during operation of the app or backend services,</li>
+      <li>internal, account-related usage statistics, for example from which app area a premium notice was opened,</li>
+      <li>locally stored app states, settings and session information.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>6. Purposes of processing</h2>
+    <p>
+      Processing takes place in particular for the following purposes:
+    </p>
+    <ul>
+      <li>providing the app and the user account,</li>
+      <li>registration, login, session management and account security,</li>
+      <li>displaying and calculating nutrition, training, water, step and weight data,</li>
+      <li>calculating individual daily targets and meal guidelines,</li>
+      <li>documenting progress and statistics,</li>
+      <li>food, beverage, barcode, packaging, recipe and dish recognition,</li>
+      <li>building and maintaining an in-house food and product database,</li>
+      <li>reducing external AI and database queries by reusing confirmed data,</li>
+      <li>storing personal recipes and dishes for later reuse,</li>
+      <li>moderation and approval of community recipes,</li>
+      <li>supplement suggestions and supplement tracking,</li>
+      <li>coach evaluation and support, where a coaching relationship exists,</li>
+      <li>providing premium features and managing usage limits,</li>
+      <li>internal analysis of which app area a premium notice was opened from, in order to improve features and offers,</li>
+      <li>troubleshooting, abuse prevention, security and technical stability,</li>
+      <li>fulfilling legal obligations and asserting legal claims.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>7. Legal bases</h2>
+    <p>
+      We only process personal data if there is a legal basis for doing so. Depending on the
+      feature, the following legal bases apply in particular:
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Processing</th>
+          <th>Legal basis</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Account, login, app features, premium features and coaching services</td>
+          <td>Art. 6(1)(b) GDPR, contract or pre-contractual measures</td>
+        </tr>
+        <tr>
+          <td>Health, fitness, nutrition, training and progress data</td>
+          <td>Art. 9(2)(a) GDPR, explicit consent; additionally Art. 6(1)(a) or (b) GDPR</td>
+        </tr>
+        <tr>
+          <td>Camera, photo, barcode, packaging and dish analysis</td>
+          <td>Art. 6(1)(a) GDPR; additionally Art. 9(2)(a) GDPR where health-related</td>
+        </tr>
+        <tr>
+          <td>Health Connect or Apple Health data</td>
+          <td>Art. 6(1)(a) GDPR; Art. 9(2)(a) GDPR where health-related</td>
+        </tr>
+        <tr>
+          <td>Coach access to user progress</td>
+          <td>Art. 6(1)(b) GDPR; Art. 9(2)(a) GDPR where health-related</td>
+        </tr>
+        <tr>
+          <td>Recipe moderation, abuse prevention and security checks</td>
+          <td>Art. 6(1)(f) GDPR, legitimate interest in safe and lawful app use</td>
+        </tr>
+        <tr>
+          <td>Internal usage and conversion analysis, for example for premium notices</td>
+          <td>Art. 6(1)(f) GDPR, legitimate interest in improving the product and offers</td>
+        </tr>
+        <tr>
+          <td>Technical security data, update checks and error analysis</td>
+          <td>Art. 6(1)(f) GDPR, legitimate interest in security and functionality</td>
+        </tr>
+        <tr>
+          <td>Statutory retention and documentation obligations</td>
+          <td>Art. 6(1)(c) GDPR</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>8. Consent when the app is first launched</h2>
+    <p>
+      When the app is launched for the first time, the user is actively asked to consent to
+      Project Prime processing health, fitness, nutrition, training, photo and progress data in
+      order to provide the app.
+    </p>
+    <p>
+      Consent must not be pre-selected. The user must be able to open the privacy policy and must
+      actively confirm the processing.
+    </p>
+    <p>
+      Without this consent, features that process health and fitness data cannot be used, or can
+      only be used to a limited extent.
+    </p>
+    <div class="notice">
+      <p>
+        Example of the consent text in the app:
+      </p>
+      <p>
+        "I have read the privacy policy and consent to Project Prime processing my health,
+        fitness, nutrition, training and progress data in order to provide me with the app
+        features and coaching. I can withdraw my consent at any time with effect for the future."
+      </p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>9. Registration, login and password</h2>
+    <p>
+      A user account is required to use the app. Users register with an email address and a
+      password. The password is not stored in plain text.
+    </p>
+    <p>
+      During registration, a password may need to be repeated to avoid input errors. To recover a
+      forgotten password, users can use the email features of the authentication provider, where
+      these are enabled.
+    </p>
+    <p>
+      Alternatively, users can log in with "Continue with Google" or "Continue with Apple". In
+      this case, Google or Apple confirms the user's identity and transmits a technical login
+      token as well as, where released by the user, email address and name to our authentication
+      provider, so that it can create or recognize a user account. No password is stored with us
+      in this case. Apple also allows a private relay email address to be used instead of the real
+      email address.
+    </p>
+    <p>
+      Login sessions can be stored locally on the device so that users do not have to log in again
+      every time they start the app.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>10. Supabase as backend service</h2>
+    <p>
+      Project Prime uses Supabase as a backend service for authentication, database, access
+      protection, role management and storage of app data.
+    </p>
+    <p>
+      Supabase may in particular process account, profile, nutrition, training, weight, role,
+      premium, recipe, food, supplement, update and review data records.
+    </p>
+    <p>
+      Supabase may be used as a data processor. According to the current state of the project, the
+      server region is Frankfurt, Germany, or the EU.
+    </p>
+    <p>
+      Access to data is restricted by technical rules, roles and access rights. Users should
+      generally only be able to see their own personal data. Coach or admin access is to be
+      restricted to authorized accounts.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>11. In-house food and product database</h2>
+    <p>
+      Project Prime uses its own food and product database. When a user adds a food item,
+      beverage or product, a data record with name, nutritional values, brand, barcode/EAN,
+      portion information, search terms and source may be stored.
+    </p>
+    <p>
+      The goal is to answer future search queries faster, more reliably and with fewer external
+      requests. If an entry is reliably found in the in-house database, it can be used without a
+      renewed AI query.
+    </p>
+    <p>
+      General food items without a brand, for example "apple", "skyr", "iceberg lettuce" or "whole
+      grain bread", may be stored as general baseline values. Branded products captured via
+      barcode or packaging may additionally be stored with barcode and brand.
+    </p>
+    <p>
+      Such data records generally serve the general functionality of the app and are not intended
+      to be permanently displayed publicly in association with a specific person. They may be
+      retained after deletion of a user account if they no longer contain any personal reference.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>12. Manual food search</h2>
+    <p>
+      Users can manually search for food and beverages. The app searches its own database first.
+      If a matching general or saved entry exists, it is shown preferentially.
+    </p>
+    <p>
+      If no matching in-house entry is found and it is a general food item or beverage without a
+      specific brand, the app may estimate nutritional values or supplement them from external
+      sources. If a specific brand or product is searched for and is not available, the app may
+      point to barcode scanning or a product photo.
+    </p>
+    <p>
+      Manual search may be limited in the free plan. Search queries may be counted in order to
+      technically implement free and premium features.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>13. Barcode scanning and packaged food</h2>
+    <p>
+      For packaged food, users can scan the barcode. The app first checks its own database. If a
+      matching data record is found there, the product can be shown without AI analysis and
+      without an external product search.
+    </p>
+    <p>
+      If the product is not known, the app may query OpenFoodFacts using the barcode. If plausible
+      nutritional values are found there, they can be displayed and, after confirmation, stored in
+      the in-house database.
+    </p>
+    <p>
+      If insufficient data is found, the app may ask the user to photograph the front of the
+      package and the nutrition table. Product name, brand, nutritional values and, where
+      applicable, portion information can be extracted from this.
+    </p>
+    <p>
+      If a portion, piece, bar or comparable unit is recognized, it may be shown as an additional
+      selection option. By default, the value per 100 g should be shown unless something else is
+      selected.
+    </p>
+    <p>
+      Barcode products that were not found or were entered manually may be stored in a review list
+      so that the information can later be checked or corrected.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>14. Loose food items</h2>
+    <p>
+      For loose food items, for example fruit, vegetables, meat, eggs, cheese, bread or salad
+      without a barcode, users can take a photo. The AI can first recognize which food item is
+      shown.
+    </p>
+    <p>
+      The app then searches its own database first. If a reliable match is found there, the
+      nutritional values from the database are used. An additional AI nutrition estimate is then
+      generally not required.
+    </p>
+    <p>
+      If no reliable match is found, the app may estimate nutritional values or supplement them
+      from external sources and save the entry after confirmation. If a typical portion can
+      reasonably be determined, for example for an apple, banana, egg, slice of bread or similar
+      food items, a portion unit may additionally be saved.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>15. Photographing a dish or meal</h2>
+    <p>
+      Users can photograph dishes or meals, for example plates, bowls, tartare rolls, döner,
+      currywurst or filled bread rolls. Users can additionally enter a note, such as "the meat is
+      venison" or "name: chili con carne".
+    </p>
+    <p>
+      The app can estimate the dish and show an overall figure for calories and macronutrients.
+      Alternatively, recognized components can be entered individually.
+    </p>
+    <p>
+      In the background, the app can compare recognized components with its own database. If
+      components are not available, general baseline values may be generated and saved so that
+      future recognitions are cheaper and more consistent.
+    </p>
+    <p>
+      Users can optionally save an estimated dish for themselves. Saved dishes are generally
+      personal entries of the respective account and are not automatically visible to all users.
+    </p>
+    <p>
+      Estimated dishes may additionally be saved as a review record so that the plausibility of
+      the estimates can be checked and improved.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>16. Capturing, dictating and saving recipes</h2>
+    <p>
+      Users can manually capture recipes or dictate ingredients by voice. Voice input uses the
+      operating system's speech recognition, where available. Users can enter ingredients with
+      quantities, grams, count or comparable units.
+    </p>
+    <p>
+      Required fields may in particular be the name of the dish and the number of servings. The
+      app calculates the nutritional values of the overall recipe and the desired serving from the
+      ingredients and quantities.
+    </p>
+    <p>
+      For ingredients, the app searches its own database first. If ingredients are not available,
+      general nutritional values may be estimated and saved as a baseline value. Where
+      appropriate, a typical portion, piece count or slice may additionally be saved.
+    </p>
+    <p>
+      Users can save their own recipes personally and select them again later. Personal recipes
+      can be deleted again by the user.
+    </p>
+    <p>
+      Users can voluntarily make a recipe available to the community. In this case, preparation
+      instructions must be provided. The recipe is first reviewed and only becomes visible to
+      other users after approval.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>17. Community recipes and moderation</h2>
+    <p>
+      Submitted community recipes may contain name, ingredients, preparation instructions,
+      servings, calories, protein, categories, notes and other nutritional values.
+    </p>
+    <p>
+      Since community recipes may later be shown to other users, users may not submit personal
+      data, insults, discriminatory content, unlawful content, confidential information belonging
+      to others, or content that is problematic under copyright law.
+    </p>
+    <p>
+      New recipe ideas are first saved for review. The app may carry out an AI pre-check, in
+      particular for grossly inappropriate, insulting, discriminatory, racist, sexist or otherwise
+      unlawful content. In addition, a manual approval is carried out by the controller or an
+      authorized person.
+    </p>
+    <p>
+      Community recipes are only intended to become generally visible after approval. Until then,
+      users may be shown a note such as "submitted for review".
+    </p>
+    <p>
+      If a user account is deleted, approved recipe ideas may generally be retained if they no
+      longer contain any personal reference. If recipe ideas contain personal data, this data is
+      deleted or anonymized upon request.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>18. Supplement features</h2>
+    <p>
+      Project Prime may contain a supplement area. Users can manually enter supplements or
+      receive a non-binding suggestion based on voluntary answers.
+    </p>
+    <p>
+      Questions may be asked about diet, fish consumption, meat consumption, vegetarian or vegan
+      diets, known deficiencies, individual notes and personal goals.
+    </p>
+    <p>
+      The information serves to create a structured overview or reminder for dietary supplements.
+      It does not replace a medical diagnosis, laboratory test or medical advice.
+    </p>
+    <p>
+      Users can adjust, remove, manually add and check off suggested supplements daily, where this
+      feature is used.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>19. Health Connect and Apple Health</h2>
+    <p>
+      Project Prime can retrieve step counts or comparable activity data from Health Connect on
+      Android or Apple Health on iOS if users actively connect this and grant permission.
+    </p>
+    <p>
+      The app may attempt to synchronize current step counts when opening relevant areas, for
+      example the diary or statistics. Permanent background synchronization is only possible
+      within the technical capabilities of the respective operating system.
+    </p>
+    <p>
+      Users can revoke this permission at any time in the settings of their device or the
+      respective health app. Without permission, steps can still be entered manually.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>20. AI analysis with Google Gemini</h2>
+    <p>
+      Project Prime uses Google Gemini for selected AI features, for example recognition of food
+      items, dishes, meals, packaging, brands and product names, reading nutrition tables,
+      estimating dishes, recipe and ingredient processing, moderation checks, as well as
+      translating or normalizing search terms, where required.
+    </p>
+    <p>
+      For AI analysis, image data, product names, nutritional information, ingredient lists, user
+      notes and technical context information may be transmitted to Google. Only the data
+      required for the respective analysis is intended to be transmitted.
+    </p>
+    <p>
+      AI results may be inaccurate or incomplete. Users should review entries and can adjust
+      recognized values in the app, as far as the feature allows for this.
+    </p>
+    <p>
+      The app is designed to prioritize confirmed in-house database entries in order to avoid
+      unnecessary AI queries.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>21. OpenFoodFacts and USDA</h2>
+    <p>
+      OpenFoodFacts may be used to retrieve product information and nutritional values, in
+      particular for packaged food and barcodes.
+    </p>
+    <p>
+      USDA may serve as an additional data source for general food items, in particular if
+      in-house or German data is not sufficient. The app is intended to use external data sources
+      sparingly and to prioritize confirmed in-house data.
+    </p>
+    <p>
+      For external data sources, their own terms of use and privacy information may apply.
+      OpenFoodFacts and USDA generally only receive the search query or the barcode, but no
+      complete user profiles, unless implemented differently for technical reasons.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>22. Nutrition, training, weight and statistics</h2>
+    <p>
+      Users can save food, beverages, meals, water, steps, activity calories, training days,
+      notes, supplements and weight entries.
+    </p>
+    <p>
+      From this, the app creates daily overviews, statistics, progress displays, weight charts,
+      meal targets, calorie trends, training evaluations and supplement status.
+    </p>
+    <p>
+      This data may be shown to the coach if the user is being supported in a coaching context and
+      a corresponding assignment exists.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>23. Coach area and coach access</h2>
+    <p>
+      The coach area allows authorized coach or admin accounts to view data of supervised users.
+      This may include profile, body data, weight history, nutrition days, meals, training data,
+      notes, supplement status and other progress data.
+    </p>
+    <p>
+      Access is to be restricted to authorized persons. Coach and admin accounts must be
+      specially protected. Access follows the principle that only data required for supervision,
+      evaluation and feedback should be visible.
+    </p>
+    <p>
+      If a coach export or comparable feature is temporarily not visible, the underlying technical
+      tables or previous data may nevertheless continue to exist, as far as they are required for
+      administration, evidence or later activation.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>24. Premium, free plan and usage limits</h2>
+    <p>
+      Project Prime may offer a free use with a limited feature scope and a premium use. The app
+      may count usage limits, for example manual search queries, photo analyses, recipe features
+      or training plan features.
+    </p>
+    <p>
+      If a limit is reached, a notice about premium may be shown. Users can voluntarily purchase
+      premium, as far as this feature is enabled in the App Store or on Google Play.
+    </p>
+    <p>
+      Individual accounts can be manually activated by the controller, for example for testing,
+      coaching, support or goodwill purposes. In doing so, only the technical premium status
+      required for activation is processed.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>25. App Store, Google Play and payment processing</h2>
+    <p>
+      If the app is downloaded via the Apple App Store or Google Play, or a subscription is
+      concluded there, Apple or Google process personal data under their own responsibility.
+    </p>
+    <p>
+      Project Prime generally only receives the information required to recognize and activate
+      the premium status. Complete payment information such as credit card data is not stored by
+      Project Prime.
+    </p>
+    <p>
+      Cancellation, plan changes, renewal and management of subscriptions generally take place via
+      the respective app store, i.e. the Apple App Store or Google Play, as far as the
+      subscription was concluded there.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>26. Update check and forced update</h2>
+    <p>
+      The app may check at launch whether a new minimum version is required. For this, platform,
+      app version and build number may be compared with a configuration in the backend.
+    </p>
+    <p>
+      If a version is no longer supported for security, functional or compatibility reasons, the
+      app may restrict access until the update is completed. This check serves the security,
+      error prevention and functionality of the app.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>27. Local storage on the device</h2>
+    <p>
+      The app may store certain data locally on the device, for example login status, app
+      settings, last selected values, caches and display states.
+    </p>
+    <p>
+      This local storage serves the usability, performance and offline availability of individual
+      app features.
+    </p>
+    <p>
+      When the app is deleted, locally stored data may be removed. Data stored on the server is
+      not automatically deleted as a result. Deleting the account within the app or a request to
+      the controller is required for this.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>28. App permissions</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Permission</th>
+          <th>Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Camera</td>
+          <td>Barcode scanning, photographing food items, dishes, meals, packaging and nutrition tables</td>
+        </tr>
+        <tr>
+          <td>Photos/media</td>
+          <td>Selecting existing images, as far as this feature is enabled</td>
+        </tr>
+        <tr>
+          <td>Microphone/voice input</td>
+          <td>Voice input for recipe ingredients, as far as the user uses this feature and the operating system provides it</td>
+        </tr>
+        <tr>
+          <td>Internet/network</td>
+          <td>Login, Supabase backend, AI analysis, OpenFoodFacts/USDA queries, premium status and update check</td>
+        </tr>
+        <tr>
+          <td>Health Connect/Apple Health</td>
+          <td>Steps and activity data, if users actively allow this connection</td>
+        </tr>
+        <tr>
+          <td>Notifications</td>
+          <td>Only if reminders or push notices are enabled</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>29. Recipients and service providers</h2>
+    <p>
+      Personal data may be transmitted to the following recipients or categories of recipients, as
+      far as this is required for the app, coaching, security or legal obligations:
+    </p>
+    <ul>
+      <li>Supabase as backend and authentication service,</li>
+      <li>Google Gemini for AI analysis,</li>
+      <li>OpenFoodFacts and USDA for food and product data,</li>
+      <li>Apple App Store and Google Play for app distribution and subscriptions,</li>
+      <li>Google and Apple as providers of the "Continue with Google" and "Continue with Apple" login options, as far as users choose this login method,</li>
+      <li>coach and admin accounts, as far as authorization exists,</li>
+      <li>hosting and IT service providers for the website, support and operation,</li>
+      <li>legal advisors, tax advisors or authorities, as far as legally required.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>30. Transfers to third countries</h2>
+    <p>
+      When using services from international providers, processing may take place outside the
+      European Union or the European Economic Area.
+    </p>
+    <p>
+      In such cases, we ensure that appropriate safeguards within the meaning of the GDPR are in
+      place, for example EU standard contractual clauses, adequacy decisions or additional
+      protective measures.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>31. Storage period</h2>
+    <p>
+      We only store personal data for as long as is necessary for the respective purposes or as
+      long as legal obligations exist.
+    </p>
+    <p>
+      Account, profile, nutrition, training, weight, supplement and progress data is generally
+      stored until account deletion or termination of use.
+    </p>
+    <p>
+      General, approved food, product and recipe data without a direct personal reference may
+      continue to exist for longer so that the app database remains functional.
+    </p>
+    <p>
+      Review records, technical logs and security data are deleted or anonymized as soon as they
+      are no longer required for error analysis, quality assurance, security or legal evidence.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>32. Account deletion and deletion of personal data</h2>
+    <p>
+      Users can delete their account within the app, as far as this feature is provided.
+      Alternatively, a deletion request can be sent to the contact address named above.
+    </p>
+    <p>
+      When an account is deleted, the user's personal data is deleted unless legal retention
+      obligations, security reasons or legitimate interests prevent this.
+    </p>
+    <p>
+      In particular, the following is deleted:
+    </p>
+    <ul>
+      <li>user account and authentication reference,</li>
+      <li>app profile and body data,</li>
+      <li>weight history, daily data and notes,</li>
+      <li>nutrition and training days,</li>
+      <li>personal saved recipes and saved dishes, as far as they are personal,</li>
+      <li>supplement plan and daily supplement entries,</li>
+      <li>role and access data, as far as it only relates to this account,</li>
+      <li>personal review records, as far as technically attributable.</li>
+    </ul>
+    <p>
+      General, non-personal data required for the functionality of the app database does not have
+      to be automatically deleted, for example confirmed general food items, barcode/product data
+      without a personal reference, or approved community recipes without a personal reference.
+    </p>
+    <p>
+      If such content contains personal data, users can request its deletion or anonymization.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>33. Rights of data subjects</h2>
+    <p>
+      Under the GDPR, users have in particular the following rights:
+    </p>
+    <ul>
+      <li>right of access under Art. 15 GDPR,</li>
+      <li>right to rectification under Art. 16 GDPR,</li>
+      <li>right to erasure under Art. 17 GDPR,</li>
+      <li>right to restriction of processing under Art. 18 GDPR,</li>
+      <li>right to data portability under Art. 20 GDPR,</li>
+      <li>right to object under Art. 21 GDPR,</li>
+      <li>right to withdraw consent granted under Art. 7(3) GDPR,</li>
+      <li>right to lodge a complaint with a data protection supervisory authority.</li>
+    </ul>
+    <p>
+      Requests can be sent to <a href="mailto:pt@dennis-vollmer.de">pt@dennis-vollmer.de</a>.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>34. Withdrawal of consent</h2>
+    <p>
+      As far as processing is based on consent, users can withdraw this consent at any time with
+      effect for the future.
+    </p>
+    <p>
+      Withdrawal may result in certain app features no longer being usable, in particular features
+      for health, nutrition, training, health-app, photo and AI analysis.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>35. Automated decisions and profiling</h2>
+    <p>
+      Project Prime creates evaluations, daily targets, meal guidelines, progress displays, AI
+      estimates, training histories, supplement suggestions and recommendations.
+    </p>
+    <p>
+      These serve to support the user and the coaching. There is no exclusively automated decision
+      with legal effect or similarly significant impact within the meaning of Art. 22 GDPR.
+    </p>
+    <p>
+      AI results and app evaluations may be inaccurate. They do not replace a medical diagnosis,
+      therapy, medical advice or individual nutritional counseling by an appropriately qualified
+      body.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>36. Data security</h2>
+    <p>
+      We take appropriate technical and organizational measures to protect personal data against
+      loss, misuse, unauthorized access, alteration or disclosure.
+    </p>
+    <p>
+      These include in particular:
+    </p>
+    <ul>
+      <li>HTTPS connections,</li>
+      <li>authentication via user accounts,</li>
+      <li>role-based access rights,</li>
+      <li>backend security rules,</li>
+      <li>separation of user, coach and admin access,</li>
+      <li>limiting AI and third-party queries to required data,</li>
+      <li>regular review and adjustment of the technical implementation.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>37. Minors</h2>
+    <p>
+      The app is generally not aimed at children. Should the app be used by minors, it should
+      first be checked whether consent from a parent or legal guardian is required.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>38. Google Play Data Safety and Apple Privacy Labels</h2>
+    <p>
+      For publication of the app in the Google Play Store and the Apple App Store, privacy
+      information is provided in accordance with the actual data processing.
+    </p>
+    <p>
+      Based on the current feature scope, Project Prime in particular processes the following
+      categories of data:
+    </p>
+    <ul>
+      <li>account data, for example email address,</li>
+      <li>health and fitness data, for example weight, body data, nutrition, training and progress,</li>
+      <li>app activity and usage status,</li>
+      <li>photos and camera data exclusively for analysis triggered by the user,</li>
+      <li>user content, for example recipes, dishes, notes and community submissions,</li>
+      <li>technical identifiers, as far as required for operating the app,</li>
+      <li>purchase or subscription status, as far as premium features are used.</li>
+    </ul>
+    <p>
+      The information in the privacy details of the respective app stores is updated accordingly
+      when the feature scope changes.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>39. Website, support and contact</h2>
+    <p>
+      The public Project Prime website provides information on the app, support, privacy, terms of
+      use and legal notice.
+    </p>
+    <p>
+      If users contact us by email, the information provided is processed in order to answer the
+      inquiry. This may include email address, name, content of the inquiry and accompanying
+      technical information.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>40. Changes to this privacy policy</h2>
+    <p>
+      We may adapt this privacy policy if features, providers, the legal situation or technical
+      processes change.
+    </p>
+    <p>
+      The current version is made available in the app or via a suitable link. In the event of
+      material changes, a notice may be given in the app.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>41. Contact for privacy questions</h2>
+    <p>
+      For questions about data protection, exercising rights or account deletion, users can
+      contact the controller at the following address:
+    </p>
+    <p>
+      <a href="mailto:pt@dennis-vollmer.de">pt@dennis-vollmer.de</a>
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>Appendix A: Overview of key processing activities</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Area</th>
+          <th>Data</th>
+          <th>Purpose</th>
+          <th>Storage/recipient</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Account</td>
+          <td>Email, login, session data</td>
+          <td>Registration and access protection</td>
+          <td>Supabase Auth, backend</td>
+        </tr>
+        <tr>
+          <td>Profile</td>
+          <td>Name, goal, profile picture</td>
+          <td>Personalization and coaching</td>
+          <td>Supabase, coach view</td>
+        </tr>
+        <tr>
+          <td>Body data</td>
+          <td>Weight, height, age, gender, target weight</td>
+          <td>Daily targets, history and evaluation</td>
+          <td>Supabase, coach view</td>
+        </tr>
+        <tr>
+          <td>Nutrition</td>
+          <td>Food, beverages, grams, portions, nutritional values, meal</td>
+          <td>Tracking and daily overview</td>
+          <td>Supabase, in-house food database</td>
+        </tr>
+        <tr>
+          <td>Training</td>
+          <td>Training day, exercises, sets, weights, duration, notes</td>
+          <td>Training plan, training log and evaluation</td>
+          <td>Supabase, coach view</td>
+        </tr>
+        <tr>
+          <td>Photos</td>
+          <td>Food, packaging, nutrition, recipe and dish photos</td>
+          <td>Recognition, estimation and quality assurance</td>
+          <td>Temporary/AI provider, possibly backend review</td>
+        </tr>
+        <tr>
+          <td>Barcode</td>
+          <td>EAN/barcode, product name, brand, nutritional values</td>
+          <td>Product search and reuse</td>
+          <td>In-house database, OpenFoodFacts</td>
+        </tr>
+        <tr>
+          <td>AI</td>
+          <td>Image data, prompts, user notes, result data</td>
+          <td>Recognition, estimation, moderation</td>
+          <td>Google Gemini</td>
+        </tr>
+        <tr>
+          <td>Recipes</td>
+          <td>Name, ingredients, preparation, categories, moderation status</td>
+          <td>Personal recipes and community recipes</td>
+          <td>Supabase, visible only after approval</td>
+        </tr>
+        <tr>
+          <td>Supplements</td>
+          <td>Answers, suggestions, selected supplements, daily status</td>
+          <td>Supplement overview and daily reminder/check-off function</td>
+          <td>Supabase</td>
+        </tr>
+        <tr>
+          <td>Health data</td>
+          <td>Steps and activity data</td>
+          <td>Automatic daily update</td>
+          <td>Health Connect/Apple Health, Supabase after saving</td>
+        </tr>
+        <tr>
+          <td>Premium</td>
+          <td>Plan, term, premium status</td>
+          <td>Activation of premium features</td>
+          <td>Apple/Google, Supabase</td>
+        </tr>
+        <tr>
+          <td>Login</td>
+          <td>Login token, email, name (for Google/Apple login)</td>
+          <td>Creating or recognizing an account</td>
+          <td>Google, Apple, Supabase Auth</td>
+        </tr>
+        <tr>
+          <td>Usage analysis</td>
+          <td>Trigger area and time of a premium notice</td>
+          <td>Product and offer improvement</td>
+          <td>Supabase</td>
+        </tr>
+        <tr>
+          <td>Coach</td>
+          <td>User progress, daily data, notes</td>
+          <td>Support and feedback</td>
+          <td>Coach/admin access</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<footer>
+  Project Prime - Privacy Policy - As of 26.07.2026
+</footer>
+</body>
+</html>

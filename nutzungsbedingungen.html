@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <script>
+  (function () {
+    try {
+      var MAP = {
+        "index.html": "index.html",
+        "datenschutz.html": "privacy.html",
+        "nutzungsbedingungen.html": "terms.html",
+        "impressum.html": "imprint.html",
+        "konto-loeschen.html": "delete-account.html",
+        "support.html": "support.html"
+      };
+      var REV = {};
+      for (var k in MAP) { REV[MAP[k]] = k; }
+      var path = location.pathname;
+      var inEn = path.indexOf("/en/") !== -1;
+      var file = path.split("/").pop() || "index.html";
+      var chosen = null;
+      try { chosen = localStorage.getItem("pp_lang"); } catch (e) {}
+      var wantEn = chosen ? chosen === "en" : (navigator.language || "de").toLowerCase().indexOf("de") !== 0;
+      if (wantEn && !inEn) {
+        location.replace("en/" + (MAP[file] || "index.html") + location.search + location.hash);
+      } else if (!wantEn && inEn) {
+        location.replace("../" + (REV[file] || "index.html") + location.search + location.hash);
+      }
+    } catch (e) {}
+  })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nutzungsbedingungen | Project Prime</title>
+  <link rel="alternate" hreflang="de" href="https://REPLACE-WITH-YOUR-DOMAIN/nutzungsbedingungen.html">
+  <link rel="alternate" hreflang="en" href="https://REPLACE-WITH-YOUR-DOMAIN/en/terms.html">
+  <link rel="alternate" hreflang="x-default" href="https://REPLACE-WITH-YOUR-DOMAIN/nutzungsbedingungen.html">
+  <style>
+    :root{--bg:#060607;--card:#101114;--text:#f5f6f7;--muted:#9ca3af;--accent:#c6ff3d;--accent-ink:#0a0a0b;--border:rgba(198,255,61,.2)}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 8% 0%,rgba(198,255,61,.09),transparent 30%),radial-gradient(circle at 90% 8%,rgba(198,255,61,.04),transparent 28%),var(--bg);color:var(--text);line-height:1.72}
+    header{border-bottom:1px solid var(--border);background:rgba(5,5,6,.92);position:sticky;top:0;backdrop-filter:blur(10px);z-index:2}
+    .nav{max-width:1100px;margin:0 auto;padding:18px 24px;display:flex;justify-content:space-between;gap:16px;align-items:center}
+    .brand{font-size:22px;font-weight:900;color:var(--accent)}
+    nav a{color:var(--muted);margin-left:18px;text-decoration:none;font-weight:700}
+    nav a:hover{color:var(--accent)}
+    main{max-width:980px;margin:0 auto;padding:46px 24px 84px}
+    .hero,.card{background:rgba(16,17,20,.88);border:1px solid rgba(255,255,255,.07);border-radius:22px;padding:30px;margin-bottom:22px;box-shadow:0 18px 40px rgba(0,0,0,.35)}
+    .hero{background:linear-gradient(135deg,rgba(198,255,61,.13),rgba(255,255,255,.025) 45%,rgba(255,255,255,.01));border-color:var(--border)}
+    h1{margin:0 0 12px;font-size:clamp(34px,5vw,54px);line-height:1.05;letter-spacing:-.03em}
+    h2{color:var(--accent);margin:0 0 10px}
+    p,li{color:var(--muted);font-size:16px}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    ul{padding-left:24px}
+    .meta{color:var(--muted);font-weight:700}
+    footer{border-top:1px solid var(--border);color:var(--muted);padding:28px 24px;text-align:center}
+    @media(max-width:760px){.nav{display:block}nav{margin-top:12px}nav a{display:inline-block;margin:0 12px 8px 0}.hero,.card{padding:22px}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="brand">Project Prime</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="support.html">Support</a>
+      <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="en/terms.html" onclick="try{localStorage.setItem('pp_lang','en')}catch(e){}">EN</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Nutzungsbedingungen</h1>
+    <p class="meta">Project Prime App · Stand: 26.07.2026</p>
+    <p>Diese Nutzungsbedingungen regeln die Nutzung der mobilen Anwendung Project Prime.</p>
+  </section>
+
+  <section class="card">
+    <h2>1. Anbieter</h2>
+    <p>Dennis Vollmer, Wiehenstraße 28, 32289 Rödinghausen, E-Mail: <a href="mailto:pt@dennis-vollmer.de">pt@dennis-vollmer.de</a>.</p>
+  </section>
+
+  <section class="card">
+    <h2>2. Leistungsumfang</h2>
+    <p>Project Prime unterstützt Nutzer bei der Dokumentation und Auswertung von Ernährung, Getränken, Gewicht, Körperdaten, Schritten, Supplements, Training, Trainingsplänen, Rezepten, Barcode-Produkten, Lebensmitteln, Gerichten und persönlichen Fortschritten.</p>
+    <p>Funktionen können erweitert, geändert oder eingestellt werden, soweit dies für Weiterentwicklung, Sicherheit, rechtliche Anforderungen oder technische Gründe erforderlich ist.</p>
+  </section>
+
+  <section class="card">
+    <h2>3. Benutzerkonto</h2>
+    <p>Für die Nutzung ist ein Benutzerkonto erforderlich. Nutzer müssen richtige Angaben machen, Zugangsdaten vertraulich behandeln und dürfen ihr Konto nicht missbräuchlich verwenden.</p>
+  </section>
+
+  <section class="card">
+    <h2>4. Free- und Premium-Funktionen</h2>
+    <p>Project Prime kann kostenlos nutzbare Funktionen und Premium-Funktionen enthalten. Kostenlose Funktionen können durch monatliche Nutzungskontingente begrenzt sein, zum Beispiel bei KI-Fotos, Barcode- und Fotoerfassung, Rezeptfunktionen oder manueller Lebensmittelsuche.</p>
+    <p>Premium schaltet die in der App beschriebenen Premium-Funktionen frei. Der konkrete Umfang kann je nach App-Version variieren und wird in der App angezeigt.</p>
+  </section>
+
+  <section class="card">
+    <h2>5. Abonnements und Zahlung</h2>
+    <p>Premium kann als monatliches oder jährliches Abonnement angeboten werden. Vorgesehene Preise sind 5,99 € pro Monat oder 29,99 € pro Jahr, soweit in der App oder im jeweiligen Store nichts Abweichendes angezeigt wird.</p>
+    <p>Käufe und Abonnements werden über Apple App Store oder Google Play abgewickelt. Es gelten zusätzlich die Bedingungen des jeweiligen Stores. Abonnements verlängern sich automatisch, sofern sie nicht rechtzeitig über das App-Store- oder Google-Play-Konto gekündigt werden.</p>
+    <p>Kündigung, Planwechsel, Rückerstattung und Zahlungsverwaltung erfolgen über Apple App Store oder Google Play. Project Prime kann die storeseitige Zahlungsabwicklung nicht ersetzen.</p>
+  </section>
+
+  <section class="card">
+    <h2>6. Gesundheits- und Trainingshinweis</h2>
+    <p>Project Prime dient der Unterstützung bei Dokumentation, Planung und Auswertung von Ernährung, Training und Fortschritt. Die App ersetzt keine ärztliche Beratung, medizinische Diagnose, Therapie, Ernährungsberatung oder physiotherapeutische Behandlung.</p>
+    <p>Trainings- und Ernährungsentscheidungen erfolgen eigenverantwortlich. Bei Schmerzen, Erkrankungen, Schwangerschaft, Medikamenteneinnahme oder gesundheitlichen Unsicherheiten sollte vor Nutzung entsprechender Funktionen medizinischer Rat eingeholt werden.</p>
+  </section>
+
+  <section class="card">
+    <h2>7. Keine Erfolgsgarantie</h2>
+    <p>Project Prime garantiert keinen bestimmten Abnehm-, Muskelaufbau-, Trainings-, Gesundheits- oder Ernährungserfolg. Ergebnisse hängen von individuellen Voraussetzungen, Verhalten, Gesundheit, Training, Ernährung und weiteren Faktoren ab.</p>
+  </section>
+
+  <section class="card">
+    <h2>8. KI-Funktionen und Nährwerte</h2>
+    <p>KI-gestützte Erkennungen, Schätzungen und Nährwerte können ungenau sein. Nutzer sollten Angaben prüfen, insbesondere bei Allergien, Unverträglichkeiten, medizinischen Diäten oder gesundheitsrelevanten Entscheidungen.</p>
+  </section>
+
+  <section class="card">
+    <h2>9. Nutzerinhalte und Community-Rezepte</h2>
+    <p>Nutzer können eigene Rezepte, Speisen, Notizen oder sonstige Inhalte erfassen. Inhalte dürfen keine Rechte Dritter verletzen und keine rechtswidrigen, beleidigenden, diskriminierenden, rassistischen, pornografischen, gewaltverherrlichenden oder sonst unangemessenen Inhalte enthalten.</p>
+    <p>Community-Rezepte können vor Veröffentlichung geprüft werden. Es besteht kein Anspruch auf Veröffentlichung. Project Prime kann Inhalte ablehnen, bearbeiten, sperren oder entfernen, wenn dies für Qualität, Sicherheit oder rechtliche Gründe erforderlich ist.</p>
+  </section>
+
+  <section class="card">
+    <h2>10. Missbrauch</h2>
+    <p>Untersagt sind insbesondere Manipulation der App, Umgehung technischer Begrenzungen, automatisierte Massenabfragen, falsche Angaben, unberechtigter Zugriff, Veröffentlichung rechtswidriger Inhalte und jede Nutzung, die App, Backend oder andere Nutzer beeinträchtigt.</p>
+    <p>Bei Verstößen können Funktionen eingeschränkt, Inhalte entfernt oder Konten gesperrt beziehungsweise gelöscht werden.</p>
+  </section>
+
+  <section class="card">
+    <h2>11. Verfügbarkeit</h2>
+    <p>Eine jederzeit unterbrechungsfreie Verfügbarkeit kann nicht gewährleistet werden. Wartung, Updates, technische Störungen, externe Dienste oder höhere Gewalt können zu Einschränkungen führen.</p>
+  </section>
+
+  <section class="card">
+    <h2>12. Haftung</h2>
+    <p>Es gelten die gesetzlichen Haftungsregelungen. Der Anbieter haftet unbeschränkt bei Vorsatz, grober Fahrlässigkeit sowie bei Verletzung von Leben, Körper oder Gesundheit. Bei leichter Fahrlässigkeit haftet der Anbieter nur bei Verletzung wesentlicher Vertragspflichten und nur für den vorhersehbaren, vertragstypischen Schaden. Im Übrigen ist die Haftung ausgeschlossen, soweit gesetzlich zulässig.</p>
+  </section>
+
+  <section class="card">
+    <h2>13. Datenschutz</h2>
+    <p>Informationen zur Verarbeitung personenbezogener Daten stehen in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+  </section>
+
+  <section class="card">
+    <h2>14. Kontolöschung</h2>
+    <p>Nutzer können ihr Konto innerhalb der App löschen. Personenbezogene App-Daten werden dabei gelöscht, soweit keine gesetzlichen Aufbewahrungspflichten oder berechtigten Gründe entgegenstehen. Bereits freigegebene, nicht personenbezogene Community- oder Lebensmitteldaten können erhalten bleiben.</p>
+  </section>
+
+  <section class="card">
+    <h2>15. Änderungen</h2>
+    <p>Diese Nutzungsbedingungen können angepasst werden, wenn neue Funktionen, technische Änderungen, Premium-Modelle oder rechtliche Anforderungen dies erforderlich machen. Die aktuelle Version wird auf dieser Seite bereitgestellt.</p>
+  </section>
+
+  <section class="card">
+    <h2>16. Anwendbares Recht</h2>
+    <p>Es gilt deutsches Recht unter Ausschluss des UN-Kaufrechts, soweit gesetzlich zulässig. Gesetzliche Verbraucherrechte bleiben unberührt.</p>
+  </section>
+</main>
+
+<footer>
+  © 2026 Dennis Vollmer · Project Prime
+</footer>
+</body>
+</html>

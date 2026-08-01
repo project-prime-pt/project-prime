@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <script>
+  (function () {
+    try {
+      var MAP = {
+        "index.html": "index.html",
+        "datenschutz.html": "privacy.html",
+        "nutzungsbedingungen.html": "terms.html",
+        "impressum.html": "imprint.html",
+        "konto-loeschen.html": "delete-account.html",
+        "support.html": "support.html"
+      };
+      var REV = {};
+      for (var k in MAP) { REV[MAP[k]] = k; }
+      var path = location.pathname;
+      var inEn = path.indexOf("/en/") !== -1;
+      var file = path.split("/").pop() || "index.html";
+      var chosen = null;
+      try { chosen = localStorage.getItem("pp_lang"); } catch (e) {}
+      var wantEn = chosen ? chosen === "en" : (navigator.language || "de").toLowerCase().indexOf("de") !== 0;
+      if (wantEn && !inEn) {
+        location.replace("en/" + (MAP[file] || "index.html") + location.search + location.hash);
+      } else if (!wantEn && inEn) {
+        location.replace("../" + (REV[file] || "index.html") + location.search + location.hash);
+      }
+    } catch (e) {}
+  })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datenschutzerklärung | Project Prime</title>
+  <link rel="alternate" hreflang="de" href="https://REPLACE-WITH-YOUR-DOMAIN/datenschutz.html">
+  <link rel="alternate" hreflang="en" href="https://REPLACE-WITH-YOUR-DOMAIN/en/privacy.html">
+  <link rel="alternate" hreflang="x-default" href="https://REPLACE-WITH-YOUR-DOMAIN/datenschutz.html">
+  <style>
+    :root {
+      --bg: #060607;
+      --card: #101114;
+      --card-soft: #16171b;
+      --text: #f5f6f7;
+      --muted: #9ca3af;
+      --accent: #c6ff3d;
+      --accent-ink: #0a0a0b;
+      --border: rgba(198, 255, 61, .2);
+      --danger: #ff4d5e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 8% 0%, rgba(198, 255, 61, .09), transparent 30%),
+        radial-gradient(circle at 90% 8%, rgba(198, 255, 61, .04), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.72;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(5, 5, 6, .92);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      z-index: 2;
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .brand {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--accent);
+    }
+
+    nav a {
+      color: var(--muted);
+      margin-left: 18px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 46px 24px 84px;
+    }
+
+    .hero,
+    .card {
+      background: rgba(16, 17, 20, .88);
+      border: 1px solid rgba(255, 255, 255, .07);
+      border-radius: 22px;
+      padding: 30px;
+      margin-bottom: 22px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, .35);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(198, 255, 61, .13), rgba(255, 255, 255, .025) 45%, rgba(255, 255, 255, .01));
+      border-color: var(--border);
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(34px, 5vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -.03em;
+    }
+
+    h2 {
+      color: var(--accent);
+      margin: 0 0 10px;
+      font-size: 26px;
+    }
+
+    h3 {
+      margin: 18px 0 8px;
+      color: var(--text);
+      font-size: 20px;
+    }
+
+    p,
+    li,
+    td,
+    th {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+      padding-left: 24px;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .notice {
+      border: 1px solid var(--border);
+      background: rgba(198, 255, 61, .1);
+      border-radius: 16px;
+      padding: 16px 18px;
+      margin-top: 18px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 4px;
+      overflow: hidden;
+      border-radius: 14px;
+    }
+
+    th,
+    td {
+      border: 1px solid rgba(255, 255, 255, .08);
+      padding: 12px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: rgba(198, 255, 61, .08);
+      color: var(--text);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        display: block;
+      }
+
+      nav {
+        margin-top: 12px;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 0 12px 8px 0;
+      }
+
+      .hero,
+      .card {
+        padding: 22px;
+      }
+
+      table,
+      thead,
+      tbody,
+      th,
+      td,
+      tr {
+        display: block;
+      }
+
+      th {
+        display: none;
+      }
+
+      td {
+        border-top: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="brand">Project Prime</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="support.html">Support</a>
+      <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="en/privacy.html" onclick="try{localStorage.setItem('pp_lang','en')}catch(e){}">EN</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <p class="meta">Version 1.5 - Stand: 26.07.2026</p>
+    <h1>Datenschutzerklärung für Project Prime</h1>
+    <p>
+      Diese Datenschutzerklärung beschreibt, wie personenbezogene Daten bei der Nutzung der mobilen App
+      Project Prime, des Coach-Bereichs, der Ernährungs-, Trainings-, Rezept-, Supplement- und Premium-Funktionen
+      verarbeitet werden.
+    </p>
+    <p>
+      Sie gilt für die Project Prime App, die zugehörigen Backend-Dienste, die öffentliche Website und alle Funktionen,
+      die unmittelbar mit der App zusammenhängen.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>1. Verantwortlicher</h2>
+    <p>
+      Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:
+    </p>
+    <p>
+      Dennis Vollmer<br>
+      Wiehenstraße 28<br>
+      32289 Rödinghausen<br>
+      Deutschland<br>
+      E-Mail: <a href="mailto:pt@dennis-vollmer.de">pt@dennis-vollmer.de</a>
+    </p>
+    <p>
+      Soweit in dieser Datenschutzerklärung von "wir", "uns", "Project Prime" oder "App" gesprochen wird,
+      ist der oben genannte Verantwortliche gemeint.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>2. Anwendungsbereich</h2>
+    <p>
+      Project Prime ist eine Coaching- und Tracking-App für Ernährung, Training, Körperdaten, Fortschrittskontrolle,
+      Rezeptverwaltung, Supplement-Planung und optionale Premium-Funktionen.
+    </p>
+    <p>
+      Die App richtet sich an Nutzerinnen und Nutzer, die ihre Ernährungs-, Trainings- und Fortschrittsdaten
+      dokumentieren und auswerten möchten. Je nach Nutzung können Daten auch einem Coach angezeigt werden,
+      wenn ein entsprechender Coach-Zugang oder eine Coach-Zuordnung besteht.
+    </p>
+    <p>
+      Diese Datenschutzerklärung gilt für:
+    </p>
+    <ul>
+      <li>die mobile Project Prime App für iOS und Android,</li>
+      <li>die Registrierung, Anmeldung und Kontoverwaltung,</li>
+      <li>das Supabase-Backend und die dort gespeicherten App-Daten,</li>
+      <li>den Coach- und Admin-Bereich, soweit genutzt,</li>
+      <li>Lebensmittel-, Barcode-, Foto-, Rezept- und KI-Funktionen,</li>
+      <li>Supplement-Funktionen und Tagesübersichten,</li>
+      <li>Premium-, Abo- und In-App-Kauf-Funktionen, soweit angeboten,</li>
+      <li>die öffentliche Website mit Impressum, Datenschutz, Nutzungsbedingungen und Support.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>3. Kurzüberblick</h2>
+    <p>
+      Project Prime verarbeitet insbesondere Konto-, Profil-, Körper-, Ernährungs-, Trainings-, Aktivitäts-,
+      Rezept-, Supplement-, Zahlungsstatus- und technische Nutzungsdaten.
+    </p>
+    <p>
+      Ein Teil dieser Daten kann Gesundheitsdaten im Sinne von Art. 9 DSGVO darstellen oder Rückschlüsse auf
+      Gesundheit, Fitness, Gewichtsentwicklung, Ernährung, Trainingsverhalten und Lebensstil zulassen.
+    </p>
+    <p>
+      Fotos werden nur verarbeitet, wenn Nutzerinnen oder Nutzer aktiv eine entsprechende Funktion verwenden,
+      zum Beispiel für lose Lebensmittel, Gerichte, Speisen, Barcodes, Verpackungen oder Nährwerttabellen.
+    </p>
+    <p>
+      Project Prime nutzt eigene Datenbankeinträge bevorzugt. Externe Abfragen und KI-Analysen sollen nur erfolgen,
+      wenn sie für die jeweilige Funktion erforderlich sind.
+    </p>
+    <p>
+      Nutzerinnen und Nutzer können ihr Konto löschen. Dabei werden personenbezogene Daten gelöscht, soweit keine
+      gesetzlichen Aufbewahrungspflichten oder berechtigten Gründe entgegenstehen. Allgemeine, nicht personenbezogene
+      Lebensmittel- oder Rezeptdaten können erhalten bleiben, wenn sie für die App-Funktion benötigt werden und keinen
+      direkten Personenbezug mehr enthalten.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>4. Begriffe</h2>
+    <p>
+      Personenbezogene Daten sind alle Informationen, die sich auf eine identifizierte oder identifizierbare natürliche
+      Person beziehen.
+    </p>
+    <p>
+      Gesundheitsdaten sind personenbezogene Daten, die sich auf die körperliche oder geistige Gesundheit beziehen oder
+      Rückschlüsse auf den Gesundheitszustand erlauben können.
+    </p>
+    <p>
+      Verarbeitung umfasst jeden Umgang mit personenbezogenen Daten, zum Beispiel Erheben, Speichern, Anzeigen,
+      Berechnen, Auswerten, Übermitteln, Löschen oder Bereitstellen.
+    </p>
+    <p>
+      Coach meint eine berechtigte Person, die im Rahmen der App oder eines Coaching-Verhältnisses Einblick in
+      freigegebene oder zugeordnete Nutzerinformationen erhalten kann.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>5. Welche Daten verarbeitet Project Prime?</h2>
+
+    <h3>5.1 Konto- und Zugangsdaten</h3>
+    <ul>
+      <li>E-Mail-Adresse,</li>
+      <li>Passwort in technisch geschützter Form,</li>
+      <li>Login-Status und Sitzungsdaten,</li>
+      <li>Zeitpunkte der Registrierung und Anmeldung,</li>
+      <li>technische Authentifizierungsinformationen,</li>
+      <li>Rolleninformationen, zum Beispiel Nutzer, Coach oder Admin, soweit vorhanden.</li>
+    </ul>
+
+    <h3>5.2 Profil- und Coachingdaten</h3>
+    <ul>
+      <li>Name oder Anzeigename,</li>
+      <li>Profilbild, sofern freiwillig hinterlegt,</li>
+      <li>Coaching-Ziel, zum Beispiel Abnehmen, Fett verlieren, Muskelaufbau, Gewicht halten oder Zunehmen,</li>
+      <li>Coach-Zuordnung, sofern ein Coaching-Kontext besteht,</li>
+      <li>Premium-Status oder manuell gesetzte Freischaltung, soweit erforderlich.</li>
+    </ul>
+
+    <h3>5.3 Körper- und Zieldaten</h3>
+    <ul>
+      <li>aktuelles Gewicht, Startgewicht und Zielgewicht,</li>
+      <li>Gewichtsverlauf mit Datum,</li>
+      <li>Größe, Alter und Geschlecht,</li>
+      <li>Stoffwechsel-Anpassung in Kilokalorien, falls eingetragen,</li>
+      <li>automatisch berechnete Tagesziele für Kalorien, Protein, Kohlenhydrate, Fett, Wasser und Schritte.</li>
+    </ul>
+
+    <h3>5.4 Ernährungsdaten</h3>
+    <ul>
+      <li>eingetragene Lebensmittel, Getränke und Mahlzeiten,</li>
+      <li>Mahlzeitenkategorie, zum Beispiel Frühstück, Mittagessen, Abendessen oder Snack,</li>
+      <li>Gramm, Portionen, Stück, Riegel, Scheiben oder sonstige Einheiten, soweit verfügbar,</li>
+      <li>Kalorien, Protein, Fett, Kohlenhydrate und weitere Nährwertinformationen,</li>
+      <li>manuell eingetragene Aktivitätskalorien,</li>
+      <li>Tagesnotizen im Tagebuch,</li>
+      <li>Einträge, die aus gespeicherten Rezepten oder gespeicherten Speisen übernommen werden.</li>
+    </ul>
+
+    <h3>5.5 Getränke</h3>
+    <p>
+      Getränke können wie Lebensmittel verarbeitet werden, sofern sie für die Ernährungsauswertung relevant sind,
+      zum Beispiel Cola, Saft, Milchgetränke, Smoothies oder alkoholische Getränke. Erfasst werden können Name,
+      Menge, Kalorien, Makronährwerte und gegebenenfalls Barcode- oder Produktinformationen.
+    </p>
+
+    <h3>5.6 Trainings- und Aktivitätsdaten</h3>
+    <ul>
+      <li>Trainingstage und Trainingsnotizen,</li>
+      <li>Trainingspläne, Trainingseinheiten und Übungen,</li>
+      <li>Sätze, Wiederholungen, Gewichte und Übungsleistungen,</li>
+      <li>Cardio-Trainingsarten, Dauer, Intensität und verbrannte Kalorien, soweit eingetragen,</li>
+      <li>Trainingsdauer über Start-/Stopp-Funktion,</li>
+      <li>subjektive Angaben wie Schwere, Energie, Pumpgefühl, Schmerzen und Kommentare,</li>
+      <li>Übungsfortschritt und Diagramme pro Übung,</li>
+      <li>Auswertung der trainierten Minuten und Einheiten in den letzten sieben Tagen.</li>
+    </ul>
+
+    <h3>5.7 Foto-, Kamera- und Bilddaten</h3>
+    <ul>
+      <li>Fotos von losen Lebensmitteln, Gerichten, Speisen, Verpackungen und Nährwerttabellen,</li>
+      <li>Barcode- und Produktbilder, wenn ein Produkt nicht gefunden wird,</li>
+      <li>aus Fotos abgeleitete Angaben wie erkannte Lebensmittel, Produktnamen, Marken, Barcode/EAN, Nährwerte und Portionen,</li>
+      <li>Nutzerhinweise zu Fotos, zum Beispiel "Fleisch ist Hirsch" oder "Name Chili con Carne".</li>
+    </ul>
+    <p>
+      Fotos werden grundsätzlich nur zur vom Nutzer ausgelösten Analyse verarbeitet. Nutzer sollten keine Fotos
+      hochladen, auf denen unbeteiligte Personen, private Dokumente, Adressen oder andere unnötige personenbezogene
+      Informationen sichtbar sind.
+    </p>
+
+    <h3>5.8 Rezept-, Speisen- und Communitydaten</h3>
+    <ul>
+      <li>eigene gespeicherte Rezepte und Speisen,</li>
+      <li>Name, Zutaten, Mengen, Einheiten, Portionen und berechnete Nährwerte,</li>
+      <li>Zubereitung, wenn ein Rezept der Community zur Verfügung gestellt werden soll,</li>
+      <li>Moderationsstatus, KI-Prüfhinweis, Freigabe- oder Ablehnungsstatus,</li>
+      <li>öffentliche Anzeige freigegebener Rezeptideen innerhalb der App.</li>
+    </ul>
+
+    <h3>5.9 Supplementdaten</h3>
+    <ul>
+      <li>freiwillige Angaben zu Ernährungsweise und Supplement-Zielen,</li>
+      <li>Antworten auf Fragen zum Supplement-Vorschlag,</li>
+      <li>zusätzliche Hinweise, die Nutzer freiwillig eintragen,</li>
+      <li>ausgewählte oder manuell hinzugefügte Supplemente,</li>
+      <li>tägliche Abhak- oder Einnahmestatus, soweit genutzt.</li>
+    </ul>
+
+    <h3>5.10 Gesundheits- und Aktivitätsdaten aus dem Gerät</h3>
+    <p>
+      Soweit Nutzer die Funktion aktiv verbinden, kann Project Prime Schritte oder vergleichbare Aktivitätsdaten aus
+      Health Connect auf Android oder Apple Health/HealthKit auf iOS abrufen. Die Verbindung erfolgt nur nach
+      ausdrücklicher Berechtigung im Betriebssystem. Nutzer können diese Berechtigung jederzeit in den Geräteeinstellungen
+      widerrufen.
+    </p>
+
+    <h3>5.11 Premium-, Abo- und Zahlungsstatus</h3>
+    <ul>
+      <li>gewählter Tarif, zum Beispiel monatlich oder jährlich,</li>
+      <li>Premium-Status und Laufzeitinformationen,</li>
+      <li>Store-Informationen von Apple oder Google, soweit für die Freischaltung erforderlich,</li>
+      <li>Informationen darüber, ob ein Konto manuell als Premium freigeschaltet wurde.</li>
+    </ul>
+    <p>
+      Zahlungsdaten wie vollständige Kreditkarteninformationen werden nicht von Project Prime selbst verarbeitet,
+      sondern über die jeweiligen App-Store-Anbieter, soweit In-App-Käufe oder Abonnements angeboten werden.
+    </p>
+
+    <h3>5.12 Technische Daten</h3>
+    <ul>
+      <li>Geräte- und App-Informationen, soweit technisch erforderlich,</li>
+      <li>App-Version, Build-Nummer und Plattform,</li>
+      <li>Update-Status und Force-Update-Konfiguration,</li>
+      <li>IP-Adresse und Verbindungsdaten bei Kommunikation mit Backend-, KI- und Datenbankdiensten,</li>
+      <li>Fehler- und Nutzungsereignisse, soweit sie beim Betrieb der App oder Backend-Dienste anfallen,</li>
+      <li>interne, kontobezogene Nutzungsstatistiken, zum Beispiel aus welchem App-Bereich ein Premium-Hinweis
+        geöffnet wurde,</li>
+      <li>lokal gespeicherte App-Zustände, Einstellungen und Sitzungsinformationen.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>6. Zwecke der Verarbeitung</h2>
+    <p>
+      Die Verarbeitung erfolgt insbesondere zu folgenden Zwecken:
+    </p>
+    <ul>
+      <li>Bereitstellung der App und des Nutzerkontos,</li>
+      <li>Registrierung, Login, Sitzungsverwaltung und Kontosicherheit,</li>
+      <li>Anzeige und Berechnung von Ernährungs-, Trainings-, Wasser-, Schritte- und Gewichtsdaten,</li>
+      <li>Berechnung individueller Tagesziele und Mahlzeiten-Richtwerte,</li>
+      <li>Dokumentation von Fortschritten und Statistiken,</li>
+      <li>Lebensmittel-, Getränke-, Barcode-, Verpackungs-, Rezept- und Gerichtserkennung,</li>
+      <li>Aufbau und Pflege einer eigenen Lebensmittel- und Produktdatenbank,</li>
+      <li>Reduzierung externer KI- und Datenbankabfragen durch Wiederverwendung bestätigter Daten,</li>
+      <li>Speicherung persönlicher Rezepte und Speisen zur späteren Wiederverwendung,</li>
+      <li>Moderation und Freigabe von Community-Rezepten,</li>
+      <li>Supplement-Vorschläge und Supplement-Tracking,</li>
+      <li>Coach-Auswertung und Betreuung, soweit ein Coaching-Zusammenhang besteht,</li>
+      <li>Bereitstellung von Premium-Funktionen und Verwaltung von Nutzungsgrenzen,</li>
+      <li>interne Analyse, aus welchem App-Bereich ein Premium-Hinweis geöffnet wurde, um Funktionen und Angebote zu
+        verbessern,</li>
+      <li>Fehlerbehebung, Missbrauchsvermeidung, Sicherheit und technische Stabilität,</li>
+      <li>Erfüllung gesetzlicher Pflichten und Wahrung rechtlicher Ansprüche.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>7. Rechtsgrundlagen</h2>
+    <p>
+      Wir verarbeiten personenbezogene Daten nur, wenn hierfür eine Rechtsgrundlage besteht. Je nach Funktion kommen
+      insbesondere folgende Rechtsgrundlagen in Betracht:
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Verarbeitung</th>
+          <th>Rechtsgrundlage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Konto, Login, App-Funktionen, Premium-Funktionen und Coaching-Leistung</td>
+          <td>Art. 6 Abs. 1 lit. b DSGVO, Vertrag oder vorvertragliche Maßnahmen</td>
+        </tr>
+        <tr>
+          <td>Gesundheits-, Fitness-, Ernährungs-, Trainings- und Fortschrittsdaten</td>
+          <td>Art. 9 Abs. 2 lit. a DSGVO, ausdrückliche Einwilligung; zusätzlich Art. 6 Abs. 1 lit. a oder b DSGVO</td>
+        </tr>
+        <tr>
+          <td>Kamera-, Foto-, Barcode-, Verpackungs- und Gerichtanalyse</td>
+          <td>Art. 6 Abs. 1 lit. a DSGVO; bei Gesundheitsbezug zusätzlich Art. 9 Abs. 2 lit. a DSGVO</td>
+        </tr>
+        <tr>
+          <td>Health Connect oder Apple Health Daten</td>
+          <td>Art. 6 Abs. 1 lit. a DSGVO; bei Gesundheitsbezug Art. 9 Abs. 2 lit. a DSGVO</td>
+        </tr>
+        <tr>
+          <td>Coach-Zugriff auf Nutzerfortschritt</td>
+          <td>Art. 6 Abs. 1 lit. b DSGVO; bei Gesundheitsbezug Art. 9 Abs. 2 lit. a DSGVO</td>
+        </tr>
+        <tr>
+          <td>Rezeptmoderation, Missbrauchsvermeidung und Sicherheitsprüfungen</td>
+          <td>Art. 6 Abs. 1 lit. f DSGVO, berechtigtes Interesse an sicherer und rechtskonformer App-Nutzung</td>
+        </tr>
+        <tr>
+          <td>Interne Nutzungs- und Konversionsanalyse, zum Beispiel bei Premium-Hinweisen</td>
+          <td>Art. 6 Abs. 1 lit. f DSGVO, berechtigtes Interesse an Produkt- und Angebotsverbesserung</td>
+        </tr>
+        <tr>
+          <td>Technische Sicherheitsdaten, Update-Prüfung und Fehleranalyse</td>
+          <td>Art. 6 Abs. 1 lit. f DSGVO, berechtigtes Interesse an Sicherheit und Funktionsfähigkeit</td>
+        </tr>
+        <tr>
+          <td>Gesetzliche Aufbewahrungs- und Nachweispflichten</td>
+          <td>Art. 6 Abs. 1 lit. c DSGVO</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>8. Einwilligung beim ersten Start der App</h2>
+    <p>
+      Beim ersten Start der App wird der Nutzer aktiv um Zustimmung gebeten, dass Project Prime Gesundheits-,
+      Fitness-, Ernährungs-, Trainings-, Foto- und Fortschrittsdaten zur Bereitstellung der App verarbeitet.
+    </p>
+    <p>
+      Die Einwilligung darf nicht vorausgewählt sein. Der Nutzer muss die Datenschutzerklärung öffnen können und die
+      Verarbeitung aktiv bestätigen.
+    </p>
+    <p>
+      Ohne diese Einwilligung können Funktionen, die Gesundheits- und Fitnessdaten verarbeiten, nicht oder nur
+      eingeschränkt genutzt werden.
+    </p>
+    <div class="notice">
+      <p>
+        Beispiel für den Einwilligungstext in der App:
+      </p>
+      <p>
+        "Ich habe die Datenschutzerklärung gelesen und willige ein, dass Project Prime meine Gesundheits-, Fitness-,
+        Ernährungs-, Trainings- und Fortschrittsdaten verarbeitet, um mir die App-Funktionen und das Coaching
+        bereitzustellen. Ich kann meine Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen."
+      </p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>9. Registrierung, Anmeldung und Passwort</h2>
+    <p>
+      Zur Nutzung der App ist ein Nutzerkonto erforderlich. Nutzer registrieren sich mit E-Mail-Adresse und Passwort.
+      Das Passwort wird nicht im Klartext gespeichert.
+    </p>
+    <p>
+      Bei der Registrierung kann ein Passwort wiederholt werden, damit Eingabefehler vermieden werden. Für die
+      Wiederherstellung eines vergessenen Passworts können E-Mail-Funktionen des Authentifizierungsanbieters genutzt
+      werden, sofern diese aktiviert sind.
+    </p>
+    <p>
+      Alternativ können sich Nutzer mit "Weiter mit Google" oder "Weiter mit Apple" anmelden. Dabei bestätigt Google
+      bzw. Apple die Identität des Nutzers und übermittelt ein technisches Anmelde-Token sowie, soweit vom Nutzer
+      freigegeben, E-Mail-Adresse und Name an unseren Authentifizierungsanbieter, damit dieser ein Nutzerkonto anlegen
+      oder wiedererkennen kann. Ein Passwort wird in diesem Fall nicht bei uns gespeichert. Apple ermöglicht es
+      zusätzlich, eine private Weiterleitungs-E-Mail-Adresse zu verwenden, statt der echten E-Mail-Adresse.
+    </p>
+    <p>
+      Login-Sitzungen können lokal auf dem Gerät gespeichert werden, damit Nutzer nicht bei jedem App-Start erneut
+      angemeldet werden müssen.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>10. Supabase als Backend-Dienst</h2>
+    <p>
+      Project Prime nutzt Supabase als Backend-Dienst für Authentifizierung, Datenbank, Zugriffsschutz, Rollenverwaltung
+      und Speicherung von App-Daten.
+    </p>
+    <p>
+      In Supabase können insbesondere Konto-, Profil-, Ernährungs-, Trainings-, Gewichts-, Rollen-, Premium-, Rezept-,
+      Lebensmittel-, Supplement-, Update- und Prüfdatensätze verarbeitet werden.
+    </p>
+    <p>
+      Supabase kann als Auftragsverarbeiter eingesetzt werden. Die Serverregion ist nach aktuellem Projektstand
+      Frankfurt, Deutschland bzw. EU.
+    </p>
+    <p>
+      Der Zugriff auf Daten wird durch technische Regeln, Rollen und Zugriffsrechte beschränkt. Nutzer sollen grundsätzlich
+      nur ihre eigenen personenbezogenen Daten sehen. Coach- oder Admin-Zugriffe sind auf berechtigte Konten zu beschränken.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>11. Eigene Lebensmittel- und Produktdatenbank</h2>
+    <p>
+      Project Prime verwendet eine eigene Lebensmittel- und Produktdatenbank. Wenn ein Nutzer ein Lebensmittel, Getränk
+      oder Produkt hinzufügt, kann ein Datensatz mit Name, Nährwerten, Marke, Barcode/EAN, Portionsinformationen,
+      Suchbegriffen und Quelle gespeichert werden.
+    </p>
+    <p>
+      Ziel ist, künftige Suchanfragen schneller, zuverlässiger und mit weniger externen Anfragen zu beantworten. Wenn ein
+      Eintrag in der eigenen Datenbank sicher gefunden wird, kann dieser ohne erneute KI-Abfrage verwendet werden.
+    </p>
+    <p>
+      Allgemeine Lebensmittel ohne Marke, zum Beispiel "Apfel", "Skyr", "Eisbergsalat" oder "Vollkornbrot", können als
+      allgemeine Basiswerte gespeichert werden. Markenprodukte, die über Barcode oder Verpackung erfasst wurden, können
+      zusätzlich mit Barcode und Marke gespeichert werden.
+    </p>
+    <p>
+      Solche Datensätze dienen grundsätzlich der allgemeinen App-Funktion und sind nicht dafür gedacht, dauerhaft einer
+      bestimmten Person zugeordnet öffentlich angezeigt zu werden. Sie können nach Löschung eines Nutzerkontos erhalten
+      bleiben, wenn sie keinen Personenbezug mehr enthalten.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>12. Manuelle Lebensmittelsuche</h2>
+    <p>
+      Nutzer können Lebensmittel und Getränke manuell suchen. Die App sucht bevorzugt in der eigenen Datenbank. Wenn ein
+      passender allgemeiner oder gespeicherter Eintrag vorhanden ist, wird dieser bevorzugt angezeigt.
+    </p>
+    <p>
+      Wird kein passender eigener Eintrag gefunden und handelt es sich um ein allgemeines Lebensmittel oder Getränk ohne
+      konkrete Marke, kann die App Nährwerte schätzen oder aus externen Quellen ergänzen. Wird eine konkrete Marke oder
+      ein konkretes Produkt gesucht und es ist nicht vorhanden, kann die App auf Barcode-Scan oder Produktfoto hinweisen.
+    </p>
+    <p>
+      Die manuelle Suche kann im Free-Modell begrenzt sein. Suchanfragen können gezählt werden, um Free- und
+      Premium-Funktionen technisch umzusetzen.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>13. Barcode-Scan und verpackte Lebensmittel</h2>
+    <p>
+      Bei verpackten Lebensmitteln kann der Nutzer den Barcode scannen. Die App prüft zunächst die eigene Datenbank.
+      Wird dort ein passender Datensatz gefunden, kann das Produkt ohne KI-Analyse und ohne externe Produktsuche angezeigt
+      werden.
+    </p>
+    <p>
+      Ist das Produkt nicht bekannt, kann die App OpenFoodFacts anhand des Barcodes abfragen. Werden dort plausible
+      Nährwerte gefunden, können diese angezeigt und nach Bestätigung in der eigenen Datenbank gespeichert werden.
+    </p>
+    <p>
+      Wenn keine ausreichenden Daten gefunden werden, kann die App den Nutzer auffordern, Vorderseite und Nährwerttabelle
+      zu fotografieren. Daraus können Produktname, Marke, Nährwerte und gegebenenfalls Portionsinformationen ausgelesen
+      werden.
+    </p>
+    <p>
+      Wenn eine Portion, ein Stück, ein Riegel oder eine vergleichbare Einheit erkannt wird, kann diese als zusätzliche
+      Auswahlmöglichkeit angezeigt werden. Standardmäßig soll die Angabe pro 100 g angezeigt werden, sofern nichts anderes
+      ausgewählt wird.
+    </p>
+    <p>
+      Nicht gefundene oder manuell erfasste Barcode-Produkte können in einer Prüfliste gespeichert werden, damit die
+      Angaben später kontrolliert oder korrigiert werden können.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>14. Lose Lebensmittel</h2>
+    <p>
+      Bei losen Lebensmitteln, zum Beispiel Obst, Gemüse, Fleisch, Ei, Käse, Brot oder Salat ohne Barcode, kann der Nutzer
+      ein Foto aufnehmen. Die KI kann zunächst erkennen, welches Lebensmittel abgebildet ist.
+    </p>
+    <p>
+      Danach sucht die App bevorzugt in der eigenen Datenbank. Wird dort ein sicherer Treffer gefunden, werden die
+      Nährwerte aus der Datenbank verwendet. Eine zusätzliche KI-Nährwertschätzung ist dann grundsätzlich nicht erforderlich.
+    </p>
+    <p>
+      Wird kein sicherer Treffer gefunden, kann die App Nährwerte schätzen oder aus externen Quellen ergänzen und den
+      Eintrag nach Bestätigung speichern. Wenn eine typische Portion sinnvoll bestimmbar ist, zum Beispiel bei Apfel,
+      Banane, Ei, Scheibe Brot oder ähnlichen Lebensmitteln, kann zusätzlich eine Portionseinheit gespeichert werden.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>15. Gericht oder Speise fotografieren</h2>
+    <p>
+      Nutzer können Gerichte oder Speisen fotografieren, zum Beispiel Teller, Bowl, Mettbrötchen, Döner, Currywurst oder
+      belegte Brötchen. Nutzer können zusätzlich einen Hinweis eingeben, etwa "Fleisch ist Hirsch" oder "Name Chili con
+      Carne".
+    </p>
+    <p>
+      Die App kann das Gericht schätzen und eine Gesamtangabe für Kalorien und Makronährwerte anzeigen. Alternativ können
+      erkannte Bestandteile einzeln eingetragen werden.
+    </p>
+    <p>
+      Im Hintergrund kann die App erkannte Bestandteile mit der eigenen Datenbank abgleichen. Wenn Bestandteile nicht
+      vorhanden sind, können allgemeine Basiswerte erzeugt und gespeichert werden, damit künftige Erkennungen günstiger
+      und konsistenter erfolgen.
+    </p>
+    <p>
+      Nutzer können eine geschätzte Speise optional für sich speichern. Gespeicherte Speisen sind grundsätzlich persönliche
+      Einträge des jeweiligen Kontos und nicht automatisch für alle Nutzer sichtbar.
+    </p>
+    <p>
+      Geschätzte Gerichte können zusätzlich als Prüfdatensatz gespeichert werden, damit die Plausibilität der Schätzungen
+      kontrolliert und verbessert werden kann.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>16. Rezepte erfassen, einsprechen und speichern</h2>
+    <p>
+      Nutzer können Rezepte manuell erfassen oder Zutaten per Spracheingabe diktieren. Die Spracheingabe nutzt die
+      Spracherkennung des Betriebssystems, soweit verfügbar. Nutzer können Zutaten mit Mengen, Gramm, Anzahl oder
+      vergleichbaren Einheiten eingeben.
+    </p>
+    <p>
+      Pflichtangaben können insbesondere der Name des Gerichts und die Anzahl der Portionen sein. Die App berechnet
+      aus Zutaten und Mengen die Nährwerte des Gesamtrezepts und der gewünschten Portion.
+    </p>
+    <p>
+      Bei Zutaten sucht die App bevorzugt in der eigenen Datenbank. Wenn Zutaten nicht vorhanden sind, können allgemeine
+      Nährwerte geschätzt und als Basiswert gespeichert werden. Soweit sinnvoll, kann zusätzlich eine typische Portion,
+      Stückzahl oder Scheibe gespeichert werden.
+    </p>
+    <p>
+      Nutzer können eigene Rezepte persönlich speichern und später erneut auswählen. Persönliche Rezepte können vom
+      Nutzer wieder gelöscht werden.
+    </p>
+    <p>
+      Nutzer können ein Rezept freiwillig der Community zur Verfügung stellen. In diesem Fall muss eine Zubereitung
+      angegeben werden. Das Rezept wird zunächst geprüft und erst nach Freigabe für andere Nutzer sichtbar.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>17. Community-Rezepte und Moderation</h2>
+    <p>
+      Eingereichte Community-Rezepte können Name, Zutaten, Zubereitung, Portionen, Kalorien, Protein, Kategorien,
+      Hinweise und weitere Nährwerte enthalten.
+    </p>
+    <p>
+      Da Community-Rezepte später anderen Nutzern angezeigt werden können, dürfen Nutzer keine personenbezogenen Daten,
+      Beleidigungen, diskriminierenden Inhalte, rechtswidrigen Inhalte, fremden vertraulichen Informationen oder
+      urheberrechtlich problematischen Inhalte einreichen.
+    </p>
+    <p>
+      Neue Rezeptideen werden zunächst zur Prüfung gespeichert. Die App kann eine KI-Vorprüfung durchführen, insbesondere
+      auf grob unpassende, beleidigende, diskriminierende, rassistische, sexistische oder sonst rechtswidrige Inhalte.
+      Zusätzlich erfolgt eine manuelle Freigabe durch den Verantwortlichen oder eine berechtigte Person.
+    </p>
+    <p>
+      Erst nach Freigabe sollen Community-Rezepte allgemein sichtbar werden. Bis dahin kann dem Nutzer ein Hinweis wie
+      "Zur Prüfung eingereicht" angezeigt werden.
+    </p>
+    <p>
+      Wird ein Nutzerkonto gelöscht, können freigegebene Rezeptideen grundsätzlich erhalten bleiben, wenn sie keinen
+      Personenbezug mehr enthalten. Enthalten Rezeptideen personenbezogene Daten, werden diese auf Anfrage gelöscht oder
+      anonymisiert.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>18. Supplement-Funktionen</h2>
+    <p>
+      Project Prime kann einen Supplement-Bereich enthalten. Nutzer können Supplemente manuell eintragen oder auf Basis
+      freiwilliger Antworten einen unverbindlichen Vorschlag erhalten.
+    </p>
+    <p>
+      Dabei können Fragen zur Ernährungsweise, zum Fischkonsum, zu Fleischkonsum, vegetarischer oder veganer Ernährung,
+      bekannten Mängeln, individuellen Hinweisen und persönlichen Zielen gestellt werden.
+    </p>
+    <p>
+      Die Angaben dienen dazu, eine strukturierte Übersicht oder Erinnerung für Nahrungsergänzungsmittel zu erstellen.
+      Sie ersetzen keine medizinische Diagnose, Laboruntersuchung oder ärztliche Beratung.
+    </p>
+    <p>
+      Nutzer können vorgeschlagene Supplemente anpassen, entfernen, manuell ergänzen und täglich abhaken, soweit diese
+      Funktion genutzt wird.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>19. Health Connect und Apple Health</h2>
+    <p>
+      Project Prime kann Schritte oder vergleichbare Aktivitätsdaten aus Health Connect auf Android oder Apple Health
+      auf iOS abrufen, wenn Nutzer dies aktiv verbinden und die Berechtigung erteilen.
+    </p>
+    <p>
+      Die App kann beim Öffnen relevanter Bereiche, zum Beispiel Tagebuch oder Statistik, versuchen, die aktuellen
+      Schritte zu synchronisieren. Eine dauerhafte Hintergrundsynchronisierung ist nur im Rahmen der technischen
+      Möglichkeiten des jeweiligen Betriebssystems möglich.
+    </p>
+    <p>
+      Nutzer können die Berechtigung jederzeit in den Einstellungen ihres Geräts oder der jeweiligen Health-App widerrufen.
+      Ohne Berechtigung können Schritte weiterhin manuell eingetragen werden.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>20. KI-Analyse mit Google Gemini</h2>
+    <p>
+      Project Prime nutzt Google Gemini für ausgewählte KI-Funktionen, zum Beispiel Erkennung von Lebensmitteln,
+      Gerichten, Speisen, Verpackungen, Marken und Produktnamen, Auslesen von Nährwerttabellen, Schätzung von Gerichten,
+      Rezept- und Zutatenverarbeitung, Moderationsprüfungen sowie Übersetzung oder Normalisierung von Suchbegriffen,
+      soweit erforderlich.
+    </p>
+    <p>
+      Zur KI-Analyse können Bilddaten, Produktnamen, Nährwertangaben, Zutatenlisten, Nutzerhinweise und technische
+      Kontextinformationen an Google übermittelt werden. Es sollen nur die Daten übermittelt werden, die für die jeweilige
+      Analyse erforderlich sind.
+    </p>
+    <p>
+      KI-Ergebnisse können fehlerhaft oder unvollständig sein. Nutzer sollten Einträge prüfen und können erkannte Werte
+      in der App anpassen, soweit die Funktion dies vorsieht.
+    </p>
+    <p>
+      Die App ist so aufgebaut, dass eigene bestätigte Datenbankeinträge bevorzugt verwendet werden, um unnötige
+      KI-Anfragen zu vermeiden.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>21. OpenFoodFacts und USDA</h2>
+    <p>
+      OpenFoodFacts kann verwendet werden, um Produktinformationen und Nährwerte insbesondere bei verpackten Lebensmitteln
+      und Barcodes abzurufen.
+    </p>
+    <p>
+      USDA kann als zusätzliche Datenquelle für allgemeine Lebensmittel dienen, insbesondere wenn eigene oder deutsche
+      Daten nicht ausreichen. Die App soll externe Datenquellen sparsam verwenden und bestätigte eigene Daten bevorzugen.
+    </p>
+    <p>
+      Bei externen Datenquellen können deren eigene Nutzungsbedingungen und Datenschutzinformationen gelten. OpenFoodFacts
+      und USDA erhalten grundsätzlich die Suchanfrage bzw. den Barcode, aber keine vollständigen Nutzerprofile, sofern
+      technisch nicht anders umgesetzt.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>22. Ernährung, Training, Gewicht und Statistiken</h2>
+    <p>
+      Nutzer können Lebensmittel, Getränke, Mahlzeiten, Wasser, Schritte, Aktivitätskalorien, Trainingstage, Notizen,
+      Supplemente und Gewichtseinträge speichern.
+    </p>
+    <p>
+      Daraus erstellt die App Tagesübersichten, Statistiken, Fortschrittsanzeigen, Gewichtsgraphen, Mahlzeitenziele,
+      Kalorienverläufe, Trainingsauswertungen und Supplement-Status.
+    </p>
+    <p>
+      Diese Daten können dem Coach angezeigt werden, wenn der Nutzer im Coaching-Kontext betreut wird und eine entsprechende
+      Zuordnung besteht.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>23. Coach-Bereich und Coach-Zugriff</h2>
+    <p>
+      Der Coach-Bereich ermöglicht berechtigten Coach- oder Admin-Konten, Daten von betreuten Nutzern einzusehen. Dazu
+      können Profil, Körperdaten, Gewichtsverlauf, Ernährungstage, Mahlzeiten, Trainingsdaten, Notizen, Supplementstatus
+      und weitere Fortschrittsdaten gehören.
+    </p>
+    <p>
+      Der Zugriff ist auf berechtigte Personen zu beschränken. Coach- und Admin-Konten müssen besonders geschützt werden.
+      Zugriffe erfolgen nach dem Prinzip, dass nur die Daten sichtbar sein sollen, die für Betreuung, Auswertung und
+      Feedback erforderlich sind.
+    </p>
+    <p>
+      Soweit ein Coach-Export oder vergleichbare Funktion zeitweise nicht sichtbar ist, können die dahinterliegenden
+      technischen Tabellen oder früheren Daten dennoch bestehen bleiben, soweit sie für Verwaltung, Nachweis oder spätere
+      Aktivierung erforderlich sind.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>24. Premium, Free-Modell und Nutzungsgrenzen</h2>
+    <p>
+      Project Prime kann eine kostenlose Nutzung mit begrenztem Funktionsumfang und eine Premium-Nutzung anbieten.
+      Die App kann Nutzungsgrenzen zählen, zum Beispiel manuelle Suchanfragen, Fotoanalysen, Rezeptfunktionen oder
+      Trainingsplanfunktionen.
+    </p>
+    <p>
+      Wenn eine Grenze erreicht ist, kann ein Hinweis auf Premium angezeigt werden. Nutzer können Premium freiwillig
+      erwerben, sofern diese Funktion im App Store oder bei Google Play aktiviert ist.
+    </p>
+    <p>
+      Einzelne Konten können durch den Verantwortlichen manuell freigeschaltet werden, zum Beispiel für Tests, Coaching,
+      Support oder Kulanz. Dabei wird nur der technische Premium-Status verarbeitet, der für die Freischaltung erforderlich
+      ist.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>25. App Store, Google Play und Zahlungsabwicklung</h2>
+    <p>
+      Wenn die App über Apple App Store oder Google Play heruntergeladen oder ein Abo abgeschlossen wird, verarbeiten
+      Apple bzw. Google personenbezogene Daten in eigener Verantwortung.
+    </p>
+    <p>
+      Project Prime erhält grundsätzlich nur die Informationen, die erforderlich sind, um den Premium-Status zu erkennen
+      und freizuschalten. Vollständige Zahlungsinformationen wie Kreditkartendaten werden nicht durch Project Prime
+      gespeichert.
+    </p>
+    <p>
+      Kündigung, Tarifwechsel, Verlängerung und Verwaltung von Abonnements erfolgen grundsätzlich über den jeweiligen
+      App Store, also Apple App Store oder Google Play, soweit das Abo dort abgeschlossen wurde.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>26. Update-Prüfung und Force-Update</h2>
+    <p>
+      Die App kann beim Start prüfen, ob eine neue Mindestversion erforderlich ist. Dazu können Plattform, App-Version
+      und Build-Nummer mit einer Konfiguration im Backend verglichen werden.
+    </p>
+    <p>
+      Wenn eine Version aus Sicherheits-, Funktions- oder Kompatibilitätsgründen nicht mehr unterstützt wird, kann die App
+      den Zugriff bis zur Aktualisierung einschränken. Diese Prüfung dient der Sicherheit, Fehlervermeidung und
+      Funktionsfähigkeit der App.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>27. Lokale Speicherung auf dem Gerät</h2>
+    <p>
+      Die App kann bestimmte Daten lokal auf dem Gerät speichern, zum Beispiel Login-Status, App-Einstellungen,
+      zuletzt ausgewählte Werte, Zwischenspeicher und Anzeigezustände.
+    </p>
+    <p>
+      Diese lokale Speicherung dient der Bedienbarkeit, Performance und Offline-Nähe einzelner App-Funktionen.
+    </p>
+    <p>
+      Beim Löschen der App können lokal gespeicherte Daten entfernt werden. Serverseitig gespeicherte Daten werden dadurch
+      nicht automatisch gelöscht. Hierfür ist die Kontolöschung in der App oder eine Anfrage an den Verantwortlichen
+      erforderlich.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>28. App-Berechtigungen</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Berechtigung</th>
+          <th>Zweck</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Kamera</td>
+          <td>Barcode-Scan, Foto von Lebensmitteln, Gerichten, Speisen, Verpackungen und Nährwerttabellen</td>
+        </tr>
+        <tr>
+          <td>Fotos/Medien</td>
+          <td>Auswahl vorhandener Bilder, sofern diese Funktion aktiviert ist</td>
+        </tr>
+        <tr>
+          <td>Mikrofon/Spracheingabe</td>
+          <td>Spracheingabe für Rezeptzutaten, sofern der Nutzer diese Funktion verwendet und das Betriebssystem sie bereitstellt</td>
+        </tr>
+        <tr>
+          <td>Internet/Netzwerk</td>
+          <td>Login, Supabase-Backend, KI-Analyse, OpenFoodFacts-/USDA-Abfragen, Premium-Status und Update-Prüfung</td>
+        </tr>
+        <tr>
+          <td>Health Connect/Apple Health</td>
+          <td>Schritte und Aktivitätsdaten, wenn Nutzer diese Verbindung aktiv erlauben</td>
+        </tr>
+        <tr>
+          <td>Benachrichtigungen</td>
+          <td>Nur falls Erinnerungen oder Push-Hinweise aktiviert werden</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>29. Empfänger und Dienstleister</h2>
+    <p>
+      Personenbezogene Daten können an folgende Empfänger oder Kategorien von Empfängern übermittelt werden, soweit dies
+      für die App, das Coaching, die Sicherheit oder gesetzliche Pflichten erforderlich ist:
+    </p>
+    <ul>
+      <li>Supabase als Backend- und Authentifizierungsdienst,</li>
+      <li>Google Gemini für KI-Analyse,</li>
+      <li>OpenFoodFacts und USDA für Lebensmittel- und Produktdaten,</li>
+      <li>Apple App Store und Google Play für App-Vertrieb und Abonnements,</li>
+      <li>Google und Apple als Anbieter der Anmeldeoptionen "Weiter mit Google" und "Weiter mit Apple", soweit Nutzer
+        diese Anmeldemethode wählen,</li>
+      <li>Coach- und Admin-Konten, soweit eine Berechtigung besteht,</li>
+      <li>Hosting- und IT-Dienstleister für Website, Support und Betrieb,</li>
+      <li>Rechtsberater, Steuerberater oder Behörden, soweit gesetzlich erforderlich.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>30. Drittlandübermittlungen</h2>
+    <p>
+      Bei Nutzung von Diensten internationaler Anbieter kann eine Verarbeitung außerhalb der Europäischen Union bzw. des
+      Europäischen Wirtschaftsraums stattfinden.
+    </p>
+    <p>
+      In solchen Fällen achten wir darauf, dass geeignete Garantien im Sinne der DSGVO bestehen, zum Beispiel
+      EU-Standardvertragsklauseln, Angemessenheitsbeschlüsse oder zusätzliche Schutzmaßnahmen.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>31. Speicherdauer</h2>
+    <p>
+      Wir speichern personenbezogene Daten nur so lange, wie es für die jeweiligen Zwecke erforderlich ist oder gesetzliche
+      Pflichten bestehen.
+    </p>
+    <p>
+      Konto-, Profil-, Ernährungs-, Trainings-, Gewichts-, Supplement- und Fortschrittsdaten werden grundsätzlich bis zur
+      Kontolöschung oder Beendigung der Nutzung gespeichert.
+    </p>
+    <p>
+      Allgemeine freigegebene Lebensmittel-, Produkt- und Rezeptdaten können ohne direkten Personenbezug länger bestehen
+      bleiben, damit die App-Datenbank funktionsfähig bleibt.
+    </p>
+    <p>
+      Prüfdatensätze, technische Logs und Sicherheitsdaten werden gelöscht oder anonymisiert, sobald sie für Fehleranalyse,
+      Qualitätssicherung, Sicherheit oder rechtliche Nachweise nicht mehr erforderlich sind.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>32. Kontolöschung und Löschung personenbezogener Daten</h2>
+    <p>
+      Nutzer können ihr Konto in der App löschen, soweit diese Funktion bereitgestellt ist. Alternativ kann eine
+      Löschanfrage an die oben genannte Kontaktadresse gerichtet werden.
+    </p>
+    <p>
+      Bei einer Kontolöschung werden personenbezogene Daten des Nutzers gelöscht, soweit keine gesetzlichen
+      Aufbewahrungspflichten, Sicherheitsgründe oder berechtigten Interessen entgegenstehen.
+    </p>
+    <p>
+      Gelöscht werden insbesondere:
+    </p>
+    <ul>
+      <li>Nutzerkonto und Authentifizierungsbezug,</li>
+      <li>App-Profil und Körperdaten,</li>
+      <li>Gewichtsverlauf, Tagesdaten und Notizen,</li>
+      <li>Ernährungs- und Trainingstage,</li>
+      <li>persönliche gespeicherte Rezepte und gespeicherte Speisen, soweit personenbezogen,</li>
+      <li>Supplement-Plan und tägliche Supplement-Einträge,</li>
+      <li>Rollen- und Zugriffsdaten, soweit sie nur dieses Konto betreffen,</li>
+      <li>personenbezogene Prüfdatensätze, soweit technisch zuordenbar.</li>
+    </ul>
+    <p>
+      Nicht automatisch gelöscht werden müssen allgemeine, nicht personenbezogene Daten, die für die Funktionsfähigkeit
+      der App-Datenbank benötigt werden, zum Beispiel bestätigte allgemeine Lebensmittel, Barcode-/Produktdaten ohne
+      Personenbezug oder freigegebene Community-Rezepte ohne Personenbezug.
+    </p>
+    <p>
+      Enthalten solche Inhalte personenbezogene Daten, können Nutzer deren Löschung oder Anonymisierung verlangen.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>33. Rechte der betroffenen Personen</h2>
+    <p>
+      Nutzer haben nach Maßgabe der DSGVO insbesondere folgende Rechte:
+    </p>
+    <ul>
+      <li>Recht auf Auskunft nach Art. 15 DSGVO,</li>
+      <li>Recht auf Berichtigung nach Art. 16 DSGVO,</li>
+      <li>Recht auf Löschung nach Art. 17 DSGVO,</li>
+      <li>Recht auf Einschränkung der Verarbeitung nach Art. 18 DSGVO,</li>
+      <li>Recht auf Datenübertragbarkeit nach Art. 20 DSGVO,</li>
+      <li>Recht auf Widerspruch nach Art. 21 DSGVO,</li>
+      <li>Recht auf Widerruf erteilter Einwilligungen nach Art. 7 Abs. 3 DSGVO,</li>
+      <li>Recht auf Beschwerde bei einer Datenschutzaufsichtsbehörde.</li>
+    </ul>
+    <p>
+      Anfragen können an <a href="mailto:pt@dennis-vollmer.de">pt@dennis-vollmer.de</a> gerichtet werden.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>34. Widerruf der Einwilligung</h2>
+    <p>
+      Soweit eine Verarbeitung auf Einwilligung beruht, kann der Nutzer diese Einwilligung jederzeit mit Wirkung für die
+      Zukunft widerrufen.
+    </p>
+    <p>
+      Ein Widerruf kann dazu führen, dass bestimmte App-Funktionen nicht mehr genutzt werden können, insbesondere
+      Funktionen zur Gesundheits-, Ernährungs-, Trainings-, Health-, Foto- und KI-Analyse.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>35. Automatisierte Entscheidungen und Profiling</h2>
+    <p>
+      Project Prime erstellt Auswertungen, Tagesziele, Mahlzeiten-Richtwerte, Fortschrittsanzeigen, KI-Schätzungen,
+      Trainingsverläufe, Supplement-Vorschläge und Empfehlungen.
+    </p>
+    <p>
+      Diese dienen der Unterstützung des Nutzers und des Coachings. Eine ausschließlich automatisierte Entscheidung mit
+      rechtlicher Wirkung oder ähnlich erheblicher Beeinträchtigung im Sinne von Art. 22 DSGVO findet nicht statt.
+    </p>
+    <p>
+      KI-Ergebnisse und App-Auswertungen können fehlerhaft sein. Sie ersetzen keine medizinische Diagnose, Therapie,
+      ärztliche Beratung oder individuelle Ernährungsberatung durch eine entsprechend qualifizierte Stelle.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>36. Datensicherheit</h2>
+    <p>
+      Wir treffen angemessene technische und organisatorische Maßnahmen, um personenbezogene Daten gegen Verlust,
+      Missbrauch, unbefugten Zugriff, Veränderung oder Offenlegung zu schützen.
+    </p>
+    <p>
+      Dazu gehören insbesondere:
+    </p>
+    <ul>
+      <li>HTTPS-Verbindungen,</li>
+      <li>Authentifizierung über Nutzerkonten,</li>
+      <li>rollenbasierte Zugriffsrechte,</li>
+      <li>Backend-Sicherheitsregeln,</li>
+      <li>Trennung von Nutzer-, Coach- und Admin-Zugriffen,</li>
+      <li>Beschränkung von KI- und Drittanbieterabfragen auf erforderliche Daten,</li>
+      <li>regelmäßige Kontrolle und Anpassung der technischen Umsetzung.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>37. Minderjährige</h2>
+    <p>
+      Die App richtet sich grundsätzlich nicht an Kinder. Sollte die App von Minderjährigen genutzt werden, ist vorab zu
+      prüfen, ob eine Einwilligung der Erziehungsberechtigten erforderlich ist.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>38. Google Play Data Safety und Apple Privacy Labels</h2>
+    <p>
+      Zur Veröffentlichung der App im Google Play Store und im Apple App Store werden Datenschutzangaben entsprechend
+      der tatsächlichen Datenverarbeitung bereitgestellt.
+    </p>
+    <p>
+      Nach dem derzeitigen Funktionsumfang verarbeitet Project Prime insbesondere folgende Datenkategorien:
+    </p>
+    <ul>
+      <li>Kontodaten, zum Beispiel E-Mail-Adresse,</li>
+      <li>Gesundheits- und Fitnessdaten, zum Beispiel Gewicht, Körperdaten, Ernährung, Training und Fortschritt,</li>
+      <li>App-Aktivitäten und Nutzungsstatus,</li>
+      <li>Fotos und Kameradaten ausschließlich zur vom Nutzer ausgelösten Analyse,</li>
+      <li>Nutzerinhalte, zum Beispiel Rezepte, Speisen, Notizen und Community-Einreichungen,</li>
+      <li>technische Identifikatoren, soweit sie für den Betrieb der App erforderlich sind,</li>
+      <li>Kauf- oder Abo-Status, soweit Premium-Funktionen genutzt werden.</li>
+    </ul>
+    <p>
+      Die Angaben in den Datenschutzinformationen der jeweiligen App Stores werden bei Änderungen des Funktionsumfangs
+      entsprechend aktualisiert.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>39. Website, Support und Kontakt</h2>
+    <p>
+      Die öffentliche Project Prime Website stellt Informationen zu App, Support, Datenschutz, Nutzungsbedingungen und
+      Impressum bereit.
+    </p>
+    <p>
+      Wenn Nutzer per E-Mail Kontakt aufnehmen, werden die übermittelten Angaben verarbeitet, um die Anfrage zu beantworten.
+      Dazu können E-Mail-Adresse, Name, Inhalt der Anfrage und technische Begleitinformationen gehören.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>40. Änderungen dieser Datenschutzerklärung</h2>
+    <p>
+      Wir können diese Datenschutzerklärung anpassen, wenn sich Funktionen, Anbieter, Rechtslage oder technische Abläufe
+      ändern.
+    </p>
+    <p>
+      Die aktuelle Fassung wird in der App oder über einen geeigneten Link bereitgestellt. Bei wesentlichen Änderungen
+      kann ein Hinweis in der App erfolgen.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>41. Kontakt bei Datenschutzfragen</h2>
+    <p>
+      Bei Fragen zum Datenschutz, zur Ausübung von Rechten oder zur Kontolöschung können Nutzer den Verantwortlichen
+      unter folgender Adresse kontaktieren:
+    </p>
+    <p>
+      <a href="mailto:pt@dennis-vollmer.de">pt@dennis-vollmer.de</a>
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>Anhang A: Übersicht wichtiger Verarbeitungsvorgänge</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Bereich</th>
+          <th>Daten</th>
+          <th>Zweck</th>
+          <th>Speicherung/Empfänger</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Account</td>
+          <td>E-Mail, Login, Sitzungsdaten</td>
+          <td>Registrierung und Zugriffsschutz</td>
+          <td>Supabase Auth, Backend</td>
+        </tr>
+        <tr>
+          <td>Profil</td>
+          <td>Name, Ziel, Profilbild</td>
+          <td>Personalisierung und Coaching</td>
+          <td>Supabase, Coach-Ansicht</td>
+        </tr>
+        <tr>
+          <td>Körperdaten</td>
+          <td>Gewicht, Größe, Alter, Geschlecht, Zielgewicht</td>
+          <td>Tagesziele, Verlauf und Auswertung</td>
+          <td>Supabase, Coach-Ansicht</td>
+        </tr>
+        <tr>
+          <td>Ernährung</td>
+          <td>Lebensmittel, Getränke, Gramm, Portionen, Nährwerte, Mahlzeit</td>
+          <td>Tracking und Tagesübersicht</td>
+          <td>Supabase, eigene Lebensmittel-Datenbank</td>
+        </tr>
+        <tr>
+          <td>Training</td>
+          <td>Trainingstag, Übungen, Sätze, Gewichte, Dauer, Notizen</td>
+          <td>Trainingsplan, Trainingslog und Auswertung</td>
+          <td>Supabase, Coach-Ansicht</td>
+        </tr>
+        <tr>
+          <td>Fotos</td>
+          <td>Lebensmittel-, Verpackungs-, Nährwert-, Rezept- und Gerichtfotos</td>
+          <td>Erkennung, Schätzung und Qualitätssicherung</td>
+          <td>Temporär/KI-Anbieter, ggf. Backend-Prüfung</td>
+        </tr>
+        <tr>
+          <td>Barcode</td>
+          <td>EAN/Barcode, Produktname, Marke, Nährwerte</td>
+          <td>Produktsuche und Wiederverwendung</td>
+          <td>Eigene Datenbank, OpenFoodFacts</td>
+        </tr>
+        <tr>
+          <td>KI</td>
+          <td>Bilddaten, Prompts, Nutzerhinweise, Ergebnisdaten</td>
+          <td>Erkennung, Schätzung, Moderation</td>
+          <td>Google Gemini</td>
+        </tr>
+        <tr>
+          <td>Rezepte</td>
+          <td>Name, Zutaten, Zubereitung, Kategorien, Moderationsstatus</td>
+          <td>Persönliche Rezepte und Community-Rezepte</td>
+          <td>Supabase, erst nach Freigabe sichtbar</td>
+        </tr>
+        <tr>
+          <td>Supplemente</td>
+          <td>Antworten, Vorschläge, gewählte Supplemente, Tagesstatus</td>
+          <td>Supplement-Übersicht und tägliche Erinnerung/Abhakfunktion</td>
+          <td>Supabase</td>
+        </tr>
+        <tr>
+          <td>Health-Daten</td>
+          <td>Schritte und Aktivitätsdaten</td>
+          <td>Automatische Tagesaktualisierung</td>
+          <td>Health Connect/Apple Health, Supabase nach Speicherung</td>
+        </tr>
+        <tr>
+          <td>Premium</td>
+          <td>Tarif, Laufzeit, Premium-Status</td>
+          <td>Freischaltung von Premium-Funktionen</td>
+          <td>Apple/Google, Supabase</td>
+        </tr>
+        <tr>
+          <td>Anmeldung</td>
+          <td>Anmelde-Token, E-Mail, Name (bei Google/Apple-Anmeldung)</td>
+          <td>Konto anlegen oder wiedererkennen</td>
+          <td>Google, Apple, Supabase Auth</td>
+        </tr>
+        <tr>
+          <td>Nutzungsanalyse</td>
+          <td>Auslöse-Bereich und Zeitpunkt eines Premium-Hinweises</td>
+          <td>Produkt- und Angebotsverbesserung</td>
+          <td>Supabase</td>
+        </tr>
+        <tr>
+          <td>Coach</td>
+          <td>Nutzerfortschritt, Tagesdaten, Notizen</td>
+          <td>Betreuung und Feedback</td>
+          <td>Coach-/Admin-Zugang</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<footer>
+  Project Prime - Datenschutz - Stand 26.07.2026
+</footer>
+</body>
+</html>

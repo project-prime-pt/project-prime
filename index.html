@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <script>
+  (function () {
+    try {
+      var MAP = {
+        "index.html": "index.html",
+        "datenschutz.html": "privacy.html",
+        "nutzungsbedingungen.html": "terms.html",
+        "impressum.html": "imprint.html",
+        "konto-loeschen.html": "delete-account.html",
+        "support.html": "support.html"
+      };
+      var REV = {};
+      for (var k in MAP) { REV[MAP[k]] = k; }
+      var path = location.pathname;
+      var inEn = path.indexOf("/en/") !== -1;
+      var file = path.split("/").pop() || "index.html";
+      var chosen = null;
+      try { chosen = localStorage.getItem("pp_lang"); } catch (e) {}
+      var wantEn = chosen ? chosen === "en" : (navigator.language || "de").toLowerCase().indexOf("de") !== 0;
+      if (wantEn && !inEn) {
+        location.replace("en/" + (MAP[file] || "index.html") + location.search + location.hash);
+      } else if (!wantEn && inEn) {
+        location.replace("../" + (REV[file] || "index.html") + location.search + location.hash);
+      }
+    } catch (e) {}
+  })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Project Prime ist die moderne Fitness-App für KI-Ernährung, Barcode-Scan, Rezepte, Training, Supplements und Fortschritt.">
+  <meta name="theme-color" content="#060607">
+  <title>Project Prime | Ernährung, Training und Fortschritt in einer App</title>
+  <link rel="alternate" hreflang="de" href="https://REPLACE-WITH-YOUR-DOMAIN/index.html">
+  <link rel="alternate" hreflang="en" href="https://REPLACE-WITH-YOUR-DOMAIN/en/index.html">
+  <link rel="alternate" hreflang="x-default" href="https://REPLACE-WITH-YOUR-DOMAIN/index.html">
+  <link rel="preload" href="assets/project-prime-logo.png" as="image">
+  <link rel="preload" href="assets/project-prime-app-icon.png" as="image">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Project Prime Startseite">
+      <img src="assets/project-prime-logo.png" alt="" class="brand__mark">
+      <span>Project Prime</span>
+    </a>
+    <nav class="site-nav" aria-label="Hauptnavigation">
+      <a href="#features">Features</a>
+      <a href="#nutrition">Ernährung</a>
+      <a href="#training">Training</a>
+      <a href="#premium">Premium</a>
+      <a href="support.html">Support</a>
+      <a href="en/index.html" onclick="try{localStorage.setItem('pp_lang','en')}catch(e){}">EN</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section">
+      <div class="hero__content">
+        <p class="eyebrow">Project Prime</p>
+        <h1>Dein Alltag für Ernährung, Training und Fortschritt. Klar. Schnell. Präzise.</h1>
+        <p class="hero__text">
+          Project Prime verbindet KI-Erkennung, Barcode-Scan, gespeicherte Rezepte,
+          Trainingsplanung, Supplements und Fortschrittsdaten in einer App, die sich
+          nach echter Nutzung anfühlt, nicht nach Tabellenarbeit.
+        </p>
+        <div class="hero__actions" id="download">
+          <a class="button button--primary" href="https://apps.apple.com/de/search?term=Project%20Prime" aria-label="Project Prime im App Store suchen">App Store</a>
+          <a class="button button--ghost" href="https://play.google.com/store/apps/details?id=de.dennisvollmer.projectprime" aria-label="Project Prime bei Google Play öffnen">Google Play</a>
+        </div>
+        <div class="trust-row" aria-label="Project Prime Vorteile">
+          <span>KI-Fotos</span>
+          <span>Barcode</span>
+          <span>Rezepte</span>
+          <span>Training</span>
+        </div>
+      </div>
+
+      <div class="phone-stage" aria-hidden="true">
+        <div class="phone">
+          <div class="phone__status"></div>
+          <div class="app-card app-card--hero">
+            <div class="avatar"></div>
+            <div>
+              <span class="mini-title">Project Prime</span>
+              <strong>Hallo Dennis</strong>
+              <p>Bleib fokussiert.</p>
+            </div>
+            <img src="assets/project-prime-logo.png" alt="" class="phone-logo">
+          </div>
+          <div class="app-card weight-card">
+            <div class="card-title">
+              <span class="icon-pill">↗</span>
+              <strong>Gewichtsverlauf</strong>
+            </div>
+            <div class="stats-row">
+              <div><span>Start</span><strong>94.0 kg</strong></div>
+              <div><span>Aktuell</span><strong>91.0 kg</strong></div>
+              <div><span>Ziel</span><strong>89.0 kg</strong></div>
+            </div>
+            <div class="chart">
+              <span class="chart-line"></span>
+              <span class="chart-fill"></span>
+            </div>
+            <button class="mock-button">+ Aktuelles Gewicht eintragen</button>
+          </div>
+          <div class="quick-grid">
+            <div class="mini-card">
+              <span class="drop">●</span>
+              <strong>Wasser</strong>
+              <b>1.5 L</b>
+              <small>/ 3.0 L</small>
+            </div>
+            <div class="mini-card mini-card--orange">
+              <span class="drop">●</span>
+              <strong>Kalorien</strong>
+              <b>1.840</b>
+              <small>/ 2.450 kcal</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section intro-strip">
+      <div>
+        <span class="metric">4</span>
+        <p>Wege zum Erfassen: Barcode, loses Lebensmittel, Gericht oder Speise, Rezept.</p>
+      </div>
+      <div>
+        <span class="metric">40</span>
+        <p>freie Suchanfragen pro Monat, danach Premium ohne Free-Limit.</p>
+      </div>
+      <div>
+        <span class="metric">1</span>
+        <p>App für Ernährung, Training, Supplements und Fortschritt.</p>
+      </div>
+    </section>
+
+    <section class="section feature-grid" id="features">
+      <div class="section-heading">
+        <p class="eyebrow">Was Project Prime stark macht</p>
+        <h2>Weniger Tippen, mehr Kontrolle.</h2>
+        <p>
+          Die App ist darauf ausgelegt, typische Fitness-Alltagsprobleme schneller zu lösen:
+          Lebensmittel erkennen, Rezepte speichern, Training dokumentieren und Ziele im Blick behalten.
+        </p>
+      </div>
+
+      <article class="feature-card feature-card--large">
+        <span class="feature-icon">✦</span>
+        <h3>KI-Erkennung für Lebensmittel und Gerichte</h3>
+        <p>
+          Fotografiere ein loses Lebensmittel oder ein Gericht. Project Prime erkennt,
+          was vor dir liegt, nutzt zuerst die eigene Datenbank und erstellt nur dann eine
+          Schätzung, wenn noch kein sicherer Treffer vorhanden ist.
+        </p>
+      </article>
+      <article class="feature-card">
+        <span class="feature-icon">▦</span>
+        <h3>Barcode-Scan</h3>
+        <p>
+          Verpackungen scannen, Produktdaten abrufen und beim nächsten Mal direkt aus
+          der eigenen Datenbank nutzen.
+        </p>
+      </article>
+      <article class="feature-card">
+        <span class="feature-icon">◷</span>
+        <h3>Live-Ziele</h3>
+        <p>
+          Kalorien, Makros, Wasser, Schritte und Gewicht werden strukturiert auf Tagesbasis angezeigt.
+        </p>
+      </article>
+    </section>
+
+    <section class="section split" id="nutrition">
+      <div>
+        <p class="eyebrow">Ernährung</p>
+        <h2>Frühstück, Mittagessen, Abendessen und Snacks im Griff.</h2>
+        <p>
+          Project Prime zeigt dir, was du heute gegessen hast, welche Mahlzeit noch offen ist
+          und wie dein Tag zu deinen Zielen passt. Häufige Einträge und zuletzt genutzte
+          Lebensmittel lassen sich schnell erneut hinzufügen.
+        </p>
+        <ul class="check-list">
+          <li>Lebensmittel per Suche, Foto oder Barcode erfassen</li>
+          <li>Getränke wie Cola, Fanta oder Sprite sinnvoll als Getränke behandeln</li>
+          <li>Eigene Lebensmittel-Datenbank mit Stern-Markierung für sichere Treffer</li>
+          <li>Portionen, Stück, Riegel oder Gramm nutzen, wenn vorhanden</li>
+        </ul>
+      </div>
+      <div class="visual-card">
+        <div class="nutrition-panel">
+          <div class="panel-head">
+            <div>
+              <span>Heute</span>
+              <strong>1.950 / 2.450</strong>
+            </div>
+            <b>kcal</b>
+          </div>
+          <div class="meal-row">
+            <span class="meal-icon meal-icon--sun"></span>
+            <div><strong>Frühstück</strong><small>2 Einträge</small></div>
+            <em>577 kcal</em>
+          </div>
+          <div class="meal-row">
+            <span class="meal-icon meal-icon--fork"></span>
+            <div><strong>Mittagessen</strong><small>Noch offen</small></div>
+            <em>0 kcal</em>
+          </div>
+          <div class="meal-row">
+            <span class="meal-icon meal-icon--moon"></span>
+            <div><strong>Abendessen</strong><small>1 Eintrag</small></div>
+            <em>947 kcal</em>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section recipe-section">
+      <div class="section-heading">
+        <p class="eyebrow">Rezepte</p>
+        <h2>Einmal erfassen. Immer wieder nutzen.</h2>
+        <p>
+          Speichere dein Standard-Frühstück, dein Lieblingsmittagessen oder komplette Rezepte.
+          Beim nächsten Mal wählst du es einfach erneut aus, statt alles neu einzugeben.
+        </p>
+      </div>
+      <div class="recipe-grid">
+        <article>
+          <span>01</span>
+          <h3>Zutaten eingeben oder einsprechen</h3>
+          <p>Name, Portionen und Zutaten erfassen. Gramm oder Anzahl nutzen.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Nährwerte berechnen</h3>
+          <p>Die App nimmt zuerst vorhandene Daten und erstellt nur fehlende Basiswerte neu.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Privat speichern</h3>
+          <p>Wiederkehrende Gerichte, Snacks und Rezepte bleiben für deinen Account abrufbar.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section split split--reverse" id="training">
+      <div class="training-visual">
+        <div class="training-card">
+          <span class="mini-title">Project Prime Training</span>
+          <h3>Push</h3>
+          <p>Bankdrücken · Schulterdrücken · Trizeps</p>
+          <div class="set-row"><span>Bankdrücken</span><strong>3 × 8 · 92.5 kg</strong></div>
+          <div class="set-row"><span>Schulterdrücken</span><strong>3 × 10 · 28 kg</strong></div>
+          <div class="set-row"><span>Dauer</span><strong>64 min</strong></div>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow">Training</p>
+        <h2>Trainingspläne, Logs und Fortschritt in einem Flow.</h2>
+        <p>
+          Lege Trainingseinheiten an, starte dein Workout, dokumentiere Sätze,
+          Wiederholungen, Gewicht, Dauer und Kalorien. Die App zeigt dir, wie sich
+          deine Leistung entwickelt.
+        </p>
+        <ul class="check-list">
+          <li>Trainingsplan mit eigenen Einheiten</li>
+          <li>Gewichtsverlauf pro Übung</li>
+          <li>Trainingsdauer und Kalorien dokumentieren</li>
+          <li>Übungen nach Muskelgruppe finden</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section supplement-band">
+      <div>
+        <p class="eyebrow">Supplements</p>
+        <h2>Supplemente nicht raten, sondern strukturiert planen.</h2>
+        <p>
+          Project Prime kann auf Basis deiner Angaben unverbindliche Supplement-Vorschläge
+          erstellen oder dir erlauben, deine eigene Liste manuell zu pflegen und täglich abzuhaken.
+        </p>
+      </div>
+      <div class="supplement-list" aria-label="Beispiel Supplement-Liste">
+        <span>Vitamin D</span>
+        <span>Omega-3</span>
+        <span>Kreatin</span>
+      </div>
+    </section>
+
+    <section class="section premium" id="premium">
+      <div class="premium__copy">
+        <p class="eyebrow">Premium</p>
+        <h2>Für alle, die Project Prime wirklich täglich nutzen.</h2>
+        <p>
+          Premium hebt Free-Limits auf und macht Project Prime zu deinem vollständigen
+          System für KI-Fotos, Barcode, Rezepte, Training und Supplements.
+        </p>
+      </div>
+      <div class="pricing">
+        <article class="price-card price-card--highlight">
+          <span class="badge">Bester Preis</span>
+          <h3>12 Monate</h3>
+          <p><strong>2,50 €</strong> / Monat</p>
+          <small>29,99 € pro Jahr abgerechnet</small>
+        </article>
+        <article class="price-card">
+          <h3>1 Monat</h3>
+          <p><strong>5,99 €</strong></p>
+          <small>monatlich kündbar</small>
+        </article>
+      </div>
+    </section>
+
+    <section class="section faq">
+      <div class="section-heading">
+        <p class="eyebrow">Kurz erklärt</p>
+        <h2>Häufige Fragen</h2>
+      </div>
+      <details>
+        <summary>Kann ich Project Prime ohne Premium nutzen?</summary>
+        <p>Ja. Die App kann kostenlos genutzt werden, bestimmte Funktionen können durch Free-Limits begrenzt sein.</p>
+      </details>
+      <details>
+        <summary>Werden meine eigenen Rezepte für alle sichtbar?</summary>
+        <p>Nein. Private Rezepte und gespeicherte Speisen bleiben deinem Account zugeordnet, außer du reichst ein Rezept bewusst zur Community-Prüfung ein.</p>
+      </details>
+      <details>
+        <summary>Ersetzt Project Prime medizinische Beratung?</summary>
+        <p>Nein. Die App dient der Dokumentation, Motivation und Orientierung. Medizinische Fragen gehören zu Ärztinnen, Ärzten oder entsprechend qualifizierten Fachpersonen.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <strong>Project Prime</strong>
+      <p>Fitness, Ernährung und Fortschritt, sauber an einem Ort.</p>
+    </div>
+    <nav aria-label="Rechtliches">
+      <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="support.html">Support</a>
+      <a href="konto-loeschen.html">Konto löschen</a>
+    </nav>
+  </footer>
+</body>
+</html>

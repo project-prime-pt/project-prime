@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <script>
+  (function () {
+    try {
+      var MAP = {
+        "index.html": "index.html",
+        "datenschutz.html": "privacy.html",
+        "nutzungsbedingungen.html": "terms.html",
+        "impressum.html": "imprint.html",
+        "konto-loeschen.html": "delete-account.html",
+        "support.html": "support.html"
+      };
+      var REV = {};
+      for (var k in MAP) { REV[MAP[k]] = k; }
+      var path = location.pathname;
+      var inEn = path.indexOf("/en/") !== -1;
+      var file = path.split("/").pop() || "index.html";
+      var chosen = null;
+      try { chosen = localStorage.getItem("pp_lang"); } catch (e) {}
+      var wantEn = chosen ? chosen === "en" : (navigator.language || "de").toLowerCase().indexOf("de") !== 0;
+      if (wantEn && !inEn) {
+        location.replace("en/" + (MAP[file] || "index.html") + location.search + location.hash);
+      } else if (!wantEn && inEn) {
+        location.replace("../" + (REV[file] || "index.html") + location.search + location.hash);
+      }
+    } catch (e) {}
+  })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konto löschen | Project Prime</title>
+  <link rel="alternate" hreflang="de" href="https://REPLACE-WITH-YOUR-DOMAIN/konto-loeschen.html">
+  <link rel="alternate" hreflang="en" href="https://REPLACE-WITH-YOUR-DOMAIN/en/delete-account.html">
+  <link rel="alternate" hreflang="x-default" href="https://REPLACE-WITH-YOUR-DOMAIN/konto-loeschen.html">
+  <style>
+    :root{--bg:#060607;--card:#101114;--text:#f5f6f7;--muted:#9ca3af;--accent:#c6ff3d;--accent-ink:#0a0a0b;--border:rgba(198,255,61,.2)}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 8% 0%,rgba(198,255,61,.09),transparent 30%),radial-gradient(circle at 90% 8%,rgba(198,255,61,.04),transparent 28%),var(--bg);color:var(--text);line-height:1.72}
+    header{border-bottom:1px solid var(--border);background:rgba(5,5,6,.92);position:sticky;top:0;backdrop-filter:blur(10px)}
+    .nav{max-width:1100px;margin:0 auto;padding:18px 24px;display:flex;justify-content:space-between;gap:16px;align-items:center}
+    .brand{font-size:22px;font-weight:900;color:var(--accent)}
+    nav a{color:var(--muted);margin-left:18px;text-decoration:none;font-weight:700}
+    nav a:hover{color:var(--accent)}
+    main{max-width:980px;margin:0 auto;padding:46px 24px 84px}
+    .hero,.card{background:rgba(16,17,20,.88);border:1px solid rgba(255,255,255,.07);border-radius:22px;padding:30px;margin-bottom:22px;box-shadow:0 18px 40px rgba(0,0,0,.35)}
+    .hero{background:linear-gradient(135deg,rgba(198,255,61,.13),rgba(255,255,255,.025) 45%,rgba(255,255,255,.01));border-color:var(--border)}
+    h1{margin:0 0 12px;font-size:clamp(34px,5vw,54px);line-height:1.05;letter-spacing:-.03em}
+    h2{color:var(--accent);margin:0 0 10px}
+    p,li{color:var(--muted);font-size:16px}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    ol,ul{padding-left:24px}
+    .button{display:inline-block;margin-top:10px;padding:12px 18px;border-radius:999px;background:linear-gradient(135deg,var(--accent),#9fe500);color:var(--accent-ink);font-weight:900;text-decoration:none;transition:transform .16s ease}
+    .button:hover{transform:translateY(-2px)}
+    .notice{border-left:4px solid var(--accent);padding:14px 16px;background:rgba(198,255,61,.1);border-radius:12px;color:var(--text)}
+    footer{border-top:1px solid var(--border);color:var(--muted);padding:28px 24px;text-align:center}
+    @media(max-width:760px){.nav{display:block}nav{margin-top:12px}nav a{display:inline-block;margin:0 12px 8px 0}.hero,.card{padding:22px}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="brand">Project Prime</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="support.html">Support</a>
+      <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="en/delete-account.html" onclick="try{localStorage.setItem('pp_lang','en')}catch(e){}">EN</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Konto löschen</h1>
+    <p>Informationen zur Löschung eines Project Prime Kontos und der zugehörigen Daten.</p>
+  </section>
+
+  <section class="card">
+    <h2>Account direkt in der App löschen</h2>
+    <p>Du kannst dein Project Prime Konto direkt in der App löschen:</p>
+    <ol>
+      <li>Öffne die Project Prime App.</li>
+      <li>Gehe unten rechts auf <strong>Profil</strong>.</li>
+      <li>Scrolle nach unten und tippe auf <strong>Account löschen</strong>.</li>
+      <li>Bestätige die Sicherheitsabfrage. Danach wird die Löschung ausgeführt.</li>
+    </ol>
+    <p class="notice">Die Löschung betrifft dein Konto und die personenbezogenen Daten, die mit deinem Konto in Project Prime verbunden sind.</p>
+  </section>
+
+  <section class="card">
+    <h2>Löschung per E-Mail anfordern</h2>
+    <p>Falls du keinen Zugriff mehr auf die App hast, kannst du die Kontolöschung per E-Mail anfordern.</p>
+    <p>Sende die Anfrage bitte von der E-Mail-Adresse, mit der dein Project Prime Konto registriert ist.</p>
+    <a class="button" href="mailto:pt@dennis-vollmer.de?subject=Project%20Prime%20Konto%20loeschen">Kontolöschung per E-Mail anfordern</a>
+  </section>
+
+  <section class="card">
+    <h2>Welche Daten gelöscht werden</h2>
+    <p>Bei der Kontolöschung werden insbesondere folgende personenbezogene App-Daten gelöscht, soweit sie deinem Konto zugeordnet sind:</p>
+    <ul>
+      <li>Account- und Profildaten</li>
+      <li>Körperdaten, Ziele, Gewichtseinträge und Fortschrittsdaten</li>
+      <li>Ernährungs-, Wasser-, Schritt-, Trainings- und Supplementdaten</li>
+      <li>private Rezepte, gespeicherte Speisen, Notizen und App-Einstellungen</li>
+      <li>Nutzungszähler und kontobezogene Premium-/Freischaltungsdaten innerhalb der App</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Daten, die ggf. nicht sofort gelöscht werden</h2>
+    <p>Bestimmte Daten können nur eingeschränkt oder nach Ablauf gesetzlicher Fristen gelöscht werden, wenn gesetzliche Aufbewahrungspflichten, Sicherheitsinteressen oder Abrechnungsnachweise bestehen.</p>
+    <ul>
+      <li>Zahlungs- und Abo-Daten werden je nach Plattform durch Apple oder Google verarbeitet und verwaltet.</li>
+      <li>Öffentliche oder zur Community eingereichte Rezeptideen können anonymisiert oder ohne direkten Personenbezug erhalten bleiben, sofern kein Personenbezug mehr besteht.</li>
+      <li>Technische Protokolle können für kurze Zeit zur Sicherheit und Fehleranalyse gespeichert bleiben.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Aufbewahrungsdauer</h2>
+    <p>Personenbezogene Daten werden nach der Löschanfrage gelöscht, sobald keine gesetzlichen oder technisch notwendigen Gründe einer sofortigen Löschung entgegenstehen. Falls einzelne Daten aus rechtlichen Gründen aufbewahrt werden müssen, werden sie nur für den erforderlichen Zeitraum gespeichert und danach gelöscht.</p>
+    <p>Weitere Informationen findest du in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+  </section>
+</main>
+
+<footer>
+  © 2026 Dennis Vollmer · Project Prime
+</footer>
+</body>
+</html>
