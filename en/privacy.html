@@ -255,7 +255,7 @@
 
 <main>
   <section class="hero">
-    <p class="meta">Version 1.6 - As of: 01.08.2026</p>
+    <p class="meta">Version 1.7 - As of: 03.08.2026</p>
     <h1>Privacy Policy for Project Prime</h1>
     <p>
       This privacy policy describes how personal data is processed when using the mobile app
@@ -483,16 +483,33 @@
       <li>locally stored app states, settings and session information.</li>
     </ul>
 
-    <h3>5.13 Level and badge data</h3>
+    <h3>5.13 Level, badge and streak data</h3>
     <p>
       Project Prime calculates an internal experience point total (XP) and a level derived from it based on
       activities already recorded (for example meals, training, weight, steps, water and supplements). Users
       can select an unlocked badge to be displayed on their profile picture.
     </p>
     <p>
+      Regular app use is likewise used to calculate and display a streak (number of consecutive active days),
+      the status of any streak protection shields, and progress on weekly quests.
+    </p>
+    <p>
       This does not involve collecting any additional personal data beyond what is already described elsewhere
-      in this policy. XP total, level and selected badge are stored via the Supabase backend, like the other
-      app data.
+      in this policy. XP total, level, selected badge, streak status and weekly quest progress are stored via
+      the Supabase backend, like the other app data.
+    </p>
+
+    <h3>5.14 Creator code data</h3>
+    <p>
+      Users can redeem a partner's creator code once to receive a time-limited free premium period. In doing
+      so, the redeemed code, the time of redemption and the end date of the trial period may be stored.
+    </p>
+    <p>
+      If the user takes out a genuine subscription after or during the trial period, it may be recorded
+      internally that this purchase can be linked to a prior code redemption. This link is used exclusively to
+      calculate revenue-share payments to the respective partner and to measure the performance of individual
+      codes. Partners do not receive any individual personal data, only aggregated figures, for example the
+      number of redemptions and the resulting purchases per code.
     </p>
   </section>
 
@@ -513,7 +530,10 @@
       <li>storing personal recipes and dishes for later reuse,</li>
       <li>moderation and approval of community recipes,</li>
       <li>supplement suggestions and supplement tracking,</li>
-      <li>calculating experience points (XP) and level, and displaying a selected badge,</li>
+      <li>calculating experience points (XP), level, streak and weekly quest progress, and displaying a
+        selected badge,</li>
+      <li>administering and evaluating creator codes for free trial periods, including aggregated
+        revenue-share reporting to partners,</li>
       <li>coach evaluation and support, where a coaching relationship exists,</li>
       <li>providing premium features and managing usage limits,</li>
       <li>internal analysis of which app area a premium notice was opened from, in order to improve features and offers,</li>
@@ -563,6 +583,11 @@
         <tr>
           <td>Internal usage and conversion analysis, for example for premium notices</td>
           <td>Art. 6(1)(f) GDPR, legitimate interest in improving the product and offers</td>
+        </tr>
+        <tr>
+          <td>Redeeming creator codes and revenue-share reporting to partners</td>
+          <td>Art. 6(1)(b) GDPR (granting the trial period) and Art. 6(1)(f) GDPR, legitimate interest in
+            accounting for partnerships</td>
         </tr>
         <tr>
           <td>Technical security data, update checks and error analysis</td>
@@ -1333,8 +1358,9 @@
           <td>Supabase</td>
         </tr>
         <tr>
-          <td>Level/badges</td>
-          <td>XP total, level, selected badge</td>
+          <td>Level/badges/streak</td>
+          <td>XP total, level, selected badge, streak status, streak protection shields, weekly quest
+            progress</td>
           <td>Motivation and progress display</td>
           <td>Supabase</td>
         </tr>
@@ -1349,6 +1375,12 @@
           <td>Plan, term, premium status</td>
           <td>Activation of premium features</td>
           <td>Apple/Google, Supabase</td>
+        </tr>
+        <tr>
+          <td>Creator code</td>
+          <td>Redeemed code, redemption time, trial end date, possibly a link to a later purchase</td>
+          <td>Granting the trial period and aggregated revenue-share reporting</td>
+          <td>Supabase, partners receive only aggregated figures per code</td>
         </tr>
         <tr>
           <td>Login</td>

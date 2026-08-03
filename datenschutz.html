@@ -255,7 +255,7 @@
 
 <main>
   <section class="hero">
-    <p class="meta">Version 1.6 - Stand: 01.08.2026</p>
+    <p class="meta">Version 1.7 - Stand: 03.08.2026</p>
     <h1>Datenschutzerklärung für Project Prime</h1>
     <p>
       Diese Datenschutzerklärung beschreibt, wie personenbezogene Daten bei der Nutzung der mobilen App
@@ -482,16 +482,35 @@
       <li>lokal gespeicherte App-Zustände, Einstellungen und Sitzungsinformationen.</li>
     </ul>
 
-    <h3>5.13 Level- und Abzeichendaten</h3>
+    <h3>5.13 Level-, Abzeichen- und Streak-Daten</h3>
     <p>
       Project Prime berechnet aus bereits erfassten Aktivitäten (zum Beispiel Mahlzeiten, Training, Gewicht,
       Schritte, Wasser und Supplemente) einen internen Erfahrungspunkte-Stand (XP) sowie ein daraus abgeleitetes
       Level. Nutzer können ein freigeschaltetes Abzeichen auswählen, das an ihrem Profilbild angezeigt wird.
     </p>
     <p>
+      Ebenso wird aus der regelmäßigen App-Nutzung eine Streak (Anzahl aufeinanderfolgender aktiver Tage), der
+      Stand etwaiger Streak-Schutzschilde sowie der Fortschritt bei wöchentlichen Quests berechnet und angezeigt.
+    </p>
+    <p>
       Dabei werden keine zusätzlichen personenbezogenen Daten erhoben, die nicht bereits an anderer Stelle dieser
-      Erklärung genannt sind. XP-Stand, Level und ausgewähltes Abzeichen werden wie die übrigen App-Daten über
-      das Supabase-Backend gespeichert.
+      Erklärung genannt sind. XP-Stand, Level, ausgewähltes Abzeichen, Streak-Stand und Wochenquest-Fortschritt
+      werden wie die übrigen App-Daten über das Supabase-Backend gespeichert.
+    </p>
+
+    <h3>5.14 Creator-Code-Daten</h3>
+    <p>
+      Nutzer können einmalig einen Creator-Code eines Kooperationspartners einlösen, um einen zeitlich begrenzten
+      kostenlosen Premium-Zugang zu erhalten. Dabei können der eingelöste Code, der Zeitpunkt der Einlösung sowie
+      das Ende des Testzeitraums gespeichert werden.
+    </p>
+    <p>
+      Schließt der Nutzer nach Ablauf oder während des Testzeitraums ein echtes Abonnement ab, kann intern
+      vermerkt werden, dass dieser Kauf einer vorherigen Code-Einlösung zugeordnet werden kann. Diese Zuordnung
+      dient ausschließlich der Berechnung einer Erlösbeteiligung gegenüber dem jeweiligen Kooperationspartner
+      sowie der Erfolgsmessung einzelner Codes. An Kooperationspartner werden dabei keine personenbezogenen
+      Einzeldaten, sondern ausschließlich zusammengefasste Kennzahlen weitergegeben, zum Beispiel die Anzahl der
+      Einlösungen und der daraus entstandenen Käufe je Code.
     </p>
   </section>
 
@@ -512,7 +531,10 @@
       <li>Speicherung persönlicher Rezepte und Speisen zur späteren Wiederverwendung,</li>
       <li>Moderation und Freigabe von Community-Rezepten,</li>
       <li>Supplement-Vorschläge und Supplement-Tracking,</li>
-      <li>Berechnung von Erfahrungspunkten (XP) und Level sowie Anzeige eines ausgewählten Abzeichens,</li>
+      <li>Berechnung von Erfahrungspunkten (XP), Level, Streak und Wochenquest-Fortschritt sowie Anzeige eines
+        ausgewählten Abzeichens,</li>
+      <li>Einlösung von Creator-Codes für zeitlich begrenzten kostenlosen Premium-Zugang sowie Zuordnung
+        späterer Käufe zur Berechnung von Erlösbeteiligungen gegenüber Kooperationspartnern,</li>
       <li>Coach-Auswertung und Betreuung, soweit ein Coaching-Zusammenhang besteht,</li>
       <li>Bereitstellung von Premium-Funktionen und Verwaltung von Nutzungsgrenzen,</li>
       <li>interne Analyse, aus welchem App-Bereich ein Premium-Hinweis geöffnet wurde, um Funktionen und Angebote zu
@@ -563,6 +585,11 @@
         <tr>
           <td>Interne Nutzungs- und Konversionsanalyse, zum Beispiel bei Premium-Hinweisen</td>
           <td>Art. 6 Abs. 1 lit. f DSGVO, berechtigtes Interesse an Produkt- und Angebotsverbesserung</td>
+        </tr>
+        <tr>
+          <td>Einlösung von Creator-Codes und Erlösbeteiligungs-Auswertung gegenüber Kooperationspartnern</td>
+          <td>Art. 6 Abs. 1 lit. b DSGVO (Gewährung des Testzeitraums) sowie Art. 6 Abs. 1 lit. f DSGVO,
+            berechtigtes Interesse an der Abrechnung von Kooperationen</td>
         </tr>
         <tr>
           <td>Technische Sicherheitsdaten, Update-Prüfung und Fehleranalyse</td>
@@ -1315,8 +1342,9 @@
           <td>Supabase</td>
         </tr>
         <tr>
-          <td>Level/Abzeichen</td>
-          <td>XP-Stand, Level, ausgewähltes Abzeichen</td>
+          <td>Level/Abzeichen/Streak</td>
+          <td>XP-Stand, Level, ausgewähltes Abzeichen, Streak-Stand, Streak-Schutzschilde,
+            Wochenquest-Fortschritt</td>
           <td>Motivation und Fortschrittsanzeige</td>
           <td>Supabase</td>
         </tr>
@@ -1331,6 +1359,12 @@
           <td>Tarif, Laufzeit, Premium-Status</td>
           <td>Freischaltung von Premium-Funktionen</td>
           <td>Apple/Google, Supabase</td>
+        </tr>
+        <tr>
+          <td>Creator-Code</td>
+          <td>Eingelöster Code, Einlösezeitpunkt, Testzeitraumende, ggf. Zuordnung eines späteren Kaufs</td>
+          <td>Gewährung des Testzeitraums und aggregierte Erlösbeteiligungs-Auswertung</td>
+          <td>Supabase, Kooperationspartner erhalten nur zusammengefasste Kennzahlen je Code</td>
         </tr>
         <tr>
           <td>Anmeldung</td>
